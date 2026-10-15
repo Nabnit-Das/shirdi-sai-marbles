@@ -28,7 +28,9 @@ export const siteData = {
   addressLine1: "Raniramchandrapur, Gariapur",
   addressLine2: "Jajpur Town, Odisha - 755001",
   phones: ["9438467960", "7606890777"],
-  hours: "Monday - Sunday: 9:00 AM – 9:00 PM (Open All 7 Days)",
+  hours: "Mon – Sat: 9:00 AM – 8:00 PM | Sun: 9:00 AM – 7:00 PM (Open All 7 Days)",
+  hoursMonSat: "Monday – Saturday: 9:00 AM – 8:00 PM",
+  hoursSun: "Sunday: 9:00 AM – 7:00 PM",
   yearsInBusiness: "16 Years in Business (Since 2010)",
 };
 
@@ -244,7 +246,7 @@ export const faqs = [
   },
   {
     q: "What are your showroom timings and location?",
-    a: "We are open all 7 days a week from 9:00 AM to 9:00 PM. Our showroom is conveniently located at Raniramchandrapur, Gariapur, Jajpur Town, Odisha - 755001.",
+    a: "We are open all 7 days a week: Monday to Saturday from 9:00 AM to 8:00 PM, and Sunday from 9:00 AM to 7:00 PM. Our showroom is conveniently located at Raniramchandrapur, Gariapur, Jajpur Town, Odisha - 755001.",
   },
 ];
 
@@ -258,7 +260,7 @@ function TopBar() {
             <MapPin className="h-3.5 w-3.5" /> Raniramchandrapur, Gariapur, Jajpur Town - 755001
           </span>
           <span className="hidden sm:inline text-white/40">•</span>
-          <span className="text-white/80">Open All 7 Days: 9:00 AM – 9:00 PM</span>
+          <span className="text-white/80">Mon – Sat: 9:00 AM – 8:00 PM | Sun: 9:00 AM – 7:00 PM</span>
         </div>
         <div className="flex items-center gap-4">
           <a
@@ -1208,9 +1210,13 @@ function VisitShowroom() {
               <Clock className="h-6 w-6 text-primary shrink-0 mt-1" />
               <div>
                 <p className="font-bold text-slate-900">Working Hours</p>
-                <p className="text-sm text-slate-700 mt-1 leading-relaxed font-medium">
-                  {siteData.hours}
-                </p>
+                <div className="text-sm text-slate-700 mt-1 leading-relaxed font-medium space-y-0.5">
+                  <p>{siteData.hoursMonSat}</p>
+                  <p>{siteData.hoursSun}</p>
+                  <span className="inline-block mt-1 text-xs text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded-full">
+                    Open All 7 Days
+                  </span>
+                </div>
               </div>
             </div>
 

@@ -1,56 +1,62 @@
 @import "tailwindcss";
 
-@layer theme {
-  :root {
-    --font-sans: "DM Sans", "Noto Sans Oriya", system-ui, sans-serif;
-    --font-display: "Cormorant Garamond", Georgia, serif;
-    --font-odia: "Noto Sans Oriya", "DM Sans", sans-serif;
+@theme {
+  --font-sans: "DM Sans", "Noto Sans Oriya", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-odia: "Noto Sans Oriya", "DM Sans", sans-serif;
 
-    --radius: 0.75rem;
+  --color-background: #fdfbf7;
+  --color-foreground: #0f172a;
+  --color-card: #ffffff;
+  --color-card-foreground: #0f172a;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #0f172a;
+  --color-primary: #831843;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f4efe6;
+  --color-secondary-foreground: #0f172a;
+  --color-muted: #f1ede4;
+  --color-muted-foreground: #334155;
+  --color-accent: #92400e;
+  --color-accent-foreground: #ffffff;
+  --color-gold: #92400e;
+  --color-ink: #0f172a;
+  --color-ink-foreground: #f8fafc;
+  --color-destructive: #b91c1c;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #cbd5e1;
+  --color-input: #cbd5e1;
+  --color-ring: #831843;
+}
 
-    /* Ultra high-contrast colors for maximum readability */
-    --background: #fdfbf7;
-    --foreground: #0f172a; /* Slate 900 - Deep, bold, dark text */
-    --card: #ffffff;
-    --card-foreground: #0f172a;
-    --popover: #ffffff;
-    --popover-foreground: #0f172a;
-    --primary: #831843; /* Deep luxury royal burgundy / wine */
-    --primary-foreground: #ffffff;
-    --secondary: #f4efe6; /* Warm Italian travertine tone */
-    --secondary-foreground: #0f172a;
-    --muted: #f1ede4;
-    --muted-foreground: #334155; /* Slate 700 - Dark, sharp, high contrast */
-    --accent: #b45309; /* Warm gold/amber */
-    --accent-foreground: #ffffff;
-    --gold: #b45309;
-    --ink: #0f172a; /* Deep ink slate */
-    --ink-foreground: #f8fafc;
-    --destructive: #b91c1c;
-    --destructive-foreground: #ffffff;
-    --border: #cbd5e1; /* Slate 300 - Clean visible borders */
-    --input: #cbd5e1;
-    --ring: #831843;
+:root {
+  --radius: 0.75rem;
+  --font-sans: "DM Sans", "Noto Sans Oriya", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-odia: "Noto Sans Oriya", "DM Sans", sans-serif;
 
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-    --color-card: var(--card);
-    --color-card-foreground: var(--card-foreground);
-    --color-primary: var(--primary);
-    --color-primary-foreground: var(--primary-foreground);
-    --color-secondary: var(--secondary);
-    --color-secondary-foreground: var(--secondary-foreground);
-    --color-muted: var(--muted);
-    --color-muted-foreground: var(--muted-foreground);
-    --color-gold: var(--gold);
-    --color-ink: var(--ink);
-    --color-ink-foreground: var(--ink-foreground);
-    --color-destructive: var(--destructive);
-    --color-destructive-foreground: var(--destructive-foreground);
-    --color-border: var(--border);
-    --color-input: var(--input);
-    --color-ring: var(--ring);
-  }
+  --background: #fdfbf7;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #831843;
+  --primary-foreground: #ffffff;
+  --secondary: #f4efe6;
+  --secondary-foreground: #0f172a;
+  --muted: #f1ede4;
+  --muted-foreground: #334155;
+  --accent: #92400e;
+  --accent-foreground: #ffffff;
+  --gold: #92400e;
+  --ink: #0f172a;
+  --ink-foreground: #f8fafc;
+  --destructive: #b91c1c;
+  --destructive-foreground: #ffffff;
+  --border: #cbd5e1;
+  --input: #cbd5e1;
+  --ring: #831843;
 }
 
 @layer base {
@@ -60,8 +66,8 @@
   }
 
   body {
-    background-color: #0b0b0e;
-    color: var(--foreground);
+    background-color: #fdfbf7;
+    color: #0f172a;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

@@ -299,8 +299,10 @@ function Header() {
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 md:px-8">
         <a href="#home" className="min-w-0 flex items-center gap-3 group">
           <img
-            src="/logo.jpg"
+            src="/logo.webp"
             alt="Shirdi Sai Marbles & Tiles Logo"
+            width={260}
+            height={390}
             className="h-12 sm:h-14 w-auto object-contain rounded-xl border border-gold/60 shadow-md group-hover:scale-105 transition-transform bg-slate-950 p-0.5 shrink-0"
           />
           <div className="flex flex-col min-w-0">
@@ -355,8 +357,10 @@ function Header() {
         >
           <div className="flex items-center gap-3 pb-4 mb-4 border-b border-border">
             <img
-              src="/logo.jpg"
+              src="/logo.webp"
               alt="Shirdi Sai Marbles Logo"
+              width={260}
+              height={390}
               className="h-12 w-auto object-contain rounded-xl border border-gold/60 shadow-sm bg-slate-950 p-0.5"
             />
             <div>
@@ -413,11 +417,13 @@ function Hero() {
       id="home"
       className="relative min-h-[92vh] flex flex-col justify-center mx-auto max-w-7xl px-4 py-12 md:px-8 md:py-24"
     >
-      <div className="max-w-3xl rounded-3xl bg-white/95 md:bg-white/92 backdrop-blur-xl p-6 sm:p-10 md:p-14 border border-gold/40 shadow-2xl">
+      <div className="max-w-3xl rounded-3xl bg-white p-6 sm:p-10 md:p-14 border border-gold/40 shadow-2xl">
         <div className="flex items-center gap-4 mb-6">
           <img
-            src="/logo.jpg"
+            src="/logo.webp"
             alt="Shirdi Sai Marbles Official Logo"
+            width={260}
+            height={390}
             className="h-20 w-auto sm:h-24 md:h-28 object-contain rounded-2xl shadow-xl border-2 border-gold/70 p-1 bg-slate-950 shrink-0"
           />
           <div>
@@ -546,8 +552,9 @@ function TileCalculator() {
           <div className="rounded-2xl bg-white p-6 sm:p-8 border border-border shadow-md space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-bold text-slate-900">Room Length (Feet)</label>
+                <label htmlFor="calc-room-length" className="block text-sm font-bold text-slate-900">Room Length (Feet)</label>
                 <input
+                  id="calc-room-length"
                   type="number"
                   min="1"
                   value={length}
@@ -557,8 +564,9 @@ function TileCalculator() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-bold text-slate-900">Room Width (Feet)</label>
+                <label htmlFor="calc-room-width" className="block text-sm font-bold text-slate-900">Room Width (Feet)</label>
                 <input
+                  id="calc-room-width"
                   type="number"
                   min="1"
                   value={width}
@@ -570,8 +578,10 @@ function TileCalculator() {
             </div>
 
             <div>
-              <label className="block text-sm font-bold text-slate-900">Select Tile Size</label>
+              <label htmlFor="calc-tile-size" className="block text-sm font-bold text-slate-900">Select Tile Size</label>
               <select
+                id="calc-tile-size"
+                aria-label="Select Tile Size"
                 value={tileSize}
                 onChange={(e) => setTileSize(e.target.value)}
                 className="mt-2 block w-full rounded-lg border-2 border-slate-300 p-3 text-base font-bold text-slate-900 focus:border-primary focus:outline-none"
@@ -583,8 +593,9 @@ function TileCalculator() {
               </select>
             </div>
 
-            <label className="flex items-center gap-3 cursor-pointer select-none">
+            <label htmlFor="calc-wastage" className="flex items-center gap-3 cursor-pointer select-none">
               <input
+                id="calc-wastage"
                 type="checkbox"
                 checked={includeWastage}
                 onChange={(e) => setIncludeWastage(e.target.checked)}
@@ -739,6 +750,7 @@ function Products() {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Enquire about ${product.name} on WhatsApp`}
                 className="btn btn-whatsapp mt-3 w-full text-sm font-bold shadow-sm"
               >
                 <MessageCircle className="h-4 w-4" /> Enquire on WhatsApp
@@ -812,6 +824,8 @@ function Gallery() {
                 src={item.img}
                 alt={`${item.label} design inspiration`}
                 loading="lazy"
+                width={800}
+                height={800}
                 className="aspect-square h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 via-slate-950/60 to-transparent p-4 text-white">
@@ -843,6 +857,8 @@ function Gallery() {
           <img
             src={galleryItems[selectedIndex].img}
             alt={`${galleryItems[selectedIndex].label} design inspiration`}
+            width={1200}
+            height={900}
             className="max-h-[70vh] max-w-full object-contain rounded-xl shadow-2xl border border-white/20"
             onClick={(e) => e.stopPropagation()}
           />
@@ -979,8 +995,10 @@ function AboutUs() {
         <div>
           <div className="flex items-center gap-4 mb-5">
             <img
-              src="/logo.jpg"
+              src="/logo.webp"
               alt="Shirdi Sai Marbles Official Emblem"
+              width={260}
+              height={390}
               className="h-16 w-auto sm:h-20 object-contain rounded-2xl border-2 border-gold/70 shadow-xl bg-slate-950 p-1 shrink-0"
             />
             <div>
@@ -1178,8 +1196,10 @@ function VisitShowroom() {
         <div className="rounded-3xl border-2 border-gold/50 bg-gradient-to-br from-white via-slate-50 to-amber-50/30 p-6 sm:p-10 md:p-14 shadow-xl">
           <div className="flex items-center gap-4 mb-4">
             <img
-              src="/logo.jpg"
+              src="/logo.webp"
               alt="Shirdi Sai Marbles Official Logo"
+              width={260}
+              height={390}
               className="h-16 w-auto sm:h-20 object-contain rounded-2xl border-2 border-gold/60 shadow-lg bg-slate-950 p-1 shrink-0"
             />
             <div>
@@ -1329,8 +1349,10 @@ function ContactEnquiry() {
         <div>
           <div className="flex items-center gap-3.5 mb-3">
             <img
-              src="/logo.jpg"
+              src="/logo.webp"
               alt="Shirdi Sai Marbles Official Logo"
+              width={260}
+              height={390}
               className="h-12 w-auto sm:h-14 object-contain rounded-xl border border-gold/60 shadow-md bg-slate-950 p-0.5 shrink-0"
             />
             <div>
@@ -1490,8 +1512,10 @@ function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 md:grid-cols-4 md:px-8">
         <div className="md:col-span-1">
           <img
-            src="/logo.jpg"
+            src="/logo.webp"
             alt="Shirdi Sai Marbles & Tiles Official Logo"
+            width={260}
+            height={390}
             className="h-20 w-auto object-contain rounded-2xl border-2 border-gold/70 shadow-2xl bg-slate-900 p-1 mb-4"
           />
           <p className="font-display text-2xl font-bold text-white">{siteData.name}</p>
@@ -1574,7 +1598,7 @@ function Footer() {
 
       <div className="mx-auto mt-12 max-w-7xl border-t border-white/10 px-4 pt-6 text-xs text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-4 md:px-8">
         <p>&copy; {new Date().getFullYear()} {siteData.name}. All rights reserved.</p>
-        <p className="text-slate-500">Building Beautiful Spaces across Odisha.</p>
+        <p className="text-slate-400">Building Beautiful Spaces across Odisha.</p>
       </div>
     </footer>
   );
@@ -1598,7 +1622,8 @@ function MobileQuickBar() {
         href={getWhatsAppUrl(siteData.phones[0])}
         target="_blank"
         rel="noopener noreferrer"
-        className={`${itemStyle} bg-emerald-600 text-white active:bg-emerald-700 shadow-md`}
+        aria-label="Get instant WhatsApp Quote"
+        className={`${itemStyle} bg-emerald-700 text-white active:bg-emerald-800 shadow-md`}
       >
         <MessageCircle className="h-5 w-5" />
         WhatsApp Quote

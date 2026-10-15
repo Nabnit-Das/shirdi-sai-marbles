@@ -1,13 +1,3 @@
-import { createClient } from "@supabase/supabase-js";
-
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-
-export const supabase =
-  supabaseUrl && supabaseAnonKey
-    ? createClient(supabaseUrl, supabaseAnonKey)
-    : null;
-
 export interface EnquiryPayload {
   name: string;
   phone: string;
@@ -18,12 +8,19 @@ export interface EnquiryPayload {
 }
 
 export async function saveEnquiryToSupabase(payload: EnquiryPayload) {
-  if (!supabase) {
-    // Supabase credentials not yet configured in environment variables
+  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+  const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    // Supabase credentials not configured yet in environment variables
     return { success: false, reason: "NOT_CONFIGURED" };
   }
 
   try {
+    // Dynamic import to avoid bundling @supabase/supabase-js in critical path
+    const { createClient } = await import("@supabase/supabase-js");
+    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
     const { data, error } = await supabase.from("enquiries").insert([
       {
         name: payload.name,

@@ -22,12 +22,15 @@ export function ScrollCanvas() {
 
     const images: (HTMLImageElement | null)[] = new Array(TOTAL_FRAMES + 1).fill(null);
     const isLoaded = new Uint8Array(TOTAL_FRAMES + 1);
+    const inFlight = new Uint8Array(TOTAL_FRAMES + 1);
 
     let currentFrame = 1;
     let targetFrame = 1;
     let lastRenderedIndex = -1;
     let isCanvasDirty = true;
     let animationFrameId: number;
+    let idleTimer: ReturnType<typeof setTimeout> | null = null;
+    let isDestroyed = false;
 
     function getBestAvailableFrame(index: number): HTMLImageElement | null {
       if (isLoaded[index] && images[index]) {
@@ -89,6 +92,52 @@ export function ScrollCanvas() {
       updateScrollTarget();
     }
 
+    function loadFrame(frameNumber: number, onDone?: () => void) {
+      if (frameNumber < 1 || frameNumber > TOTAL_FRAMES) return;
+      if (isLoaded[frameNumber] || inFlight[frameNumber]) {
+        onDone?.();
+        return;
+      }
+
+      inFlight[frameNumber] = 1;
+      const img = new Image();
+      img.src = getFramePath(frameNumber);
+
+      const onComplete = () => {
+        if (isDestroyed) return;
+        images[frameNumber] = img;
+        isLoaded[frameNumber] = 1;
+        inFlight[frameNumber] = 0;
+
+        if (Math.round(currentFrame) === frameNumber) {
+          isCanvasDirty = true;
+        }
+
+        if (img.decode) {
+          img.decode().catch(() => {});
+        }
+        onDone?.();
+      };
+
+      if (img.complete && img.naturalWidth > 0) {
+        onComplete();
+      } else {
+        img.onload = onComplete;
+        img.onerror = onComplete;
+      }
+    }
+
+    function preloadNearScroll(centerFrame: number) {
+      // Prioritize nearby frames around current scroll direction
+      const range = 6;
+      for (let i = 0; i <= range; i++) {
+        const next = centerFrame + i;
+        if (next <= TOTAL_FRAMES) loadFrame(next);
+        const prev = centerFrame - i;
+        if (prev >= 1) loadFrame(prev);
+      }
+    }
+
     function updateScrollTarget() {
       const scrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -99,6 +148,8 @@ export function ScrollCanvas() {
         const progress = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
         targetFrame = 1 + progress * (TOTAL_FRAMES - 1);
       }
+
+      preloadNearScroll(Math.round(targetFrame));
     }
 
     function loop() {
@@ -122,70 +173,36 @@ export function ScrollCanvas() {
       animationFrameId = requestAnimationFrame(loop);
     }
 
-    // Preload system
-    function preloadFrames() {
-      // 1. Immediately request Frame 1
-      const firstImg = new Image();
-      firstImg.src = getFramePath(1);
+    // Defer non-critical background preloading until after initial page load & idle
+    function startIdlePreload() {
+      const nav = navigator as unknown as { connection?: { saveData?: boolean } };
+      if (nav.connection?.saveData) return;
 
-      const onFirstLoad = () => {
-        images[1] = firstImg;
-        isLoaded[1] = 1;
-        isCanvasDirty = true;
-        if (firstImg.decode) {
-          firstImg.decode().catch(() => {});
-        }
-      };
-
-      if (firstImg.complete && firstImg.naturalWidth > 0) {
-        onFirstLoad();
-      } else {
-        firstImg.onload = onFirstLoad;
-      }
-
-      // 2. Load keyframes then remaining in parallel
       const queue: number[] = [];
+      // 1. Keyframes first (every 10th frame)
       for (let i = 10; i <= TOTAL_FRAMES; i += 10) {
-        queue.push(i);
+        if (!isLoaded[i]) queue.push(i);
       }
+      // 2. Intermediate frames
       for (let i = 2; i <= TOTAL_FRAMES; i++) {
-        if (i % 10 !== 0) queue.push(i);
+        if (i % 10 !== 0 && !isLoaded[i]) queue.push(i);
       }
 
-      const CONCURRENCY = 12;
-      let queueIndex = 0;
+      let qIndex = 0;
+      const CONCURRENCY = 2; // Low concurrency to prevent bandwidth choking
 
-      function worker() {
-        if (queueIndex >= queue.length) return;
-        const frameNumber = queue[queueIndex++];
-        const img = new Image();
-        img.src = getFramePath(frameNumber);
-
-        const onComplete = () => {
-          images[frameNumber] = img;
-          isLoaded[frameNumber] = 1;
-
-          if (Math.round(currentFrame) === frameNumber) {
-            isCanvasDirty = true;
+      function nextWorker() {
+        if (isDestroyed || qIndex >= queue.length) return;
+        const fn = queue[qIndex++];
+        loadFrame(fn, () => {
+          if (!isDestroyed) {
+            setTimeout(nextWorker, 40); // Gentle spacing between frames
           }
-
-          if (img.decode) {
-            img.decode().catch(() => {});
-          }
-
-          worker();
-        };
-
-        if (img.complete && img.naturalWidth > 0) {
-          onComplete();
-        } else {
-          img.onload = onComplete;
-          img.onerror = onComplete;
-        }
+        });
       }
 
       for (let c = 0; c < CONCURRENCY; c++) {
-        worker();
+        nextWorker();
       }
     }
 
@@ -194,10 +211,26 @@ export function ScrollCanvas() {
 
     resizeCanvas();
     updateScrollTarget();
-    preloadFrames();
+
+    // 1. Load initial frame immediately
+    loadFrame(1);
+
+    // 2. Start background preload after 3 seconds of idle time (ensures FCP & LCP finish unhindered)
+    idleTimer = setTimeout(() => {
+      if ("requestIdleCallback" in window) {
+        (window as Window & { requestIdleCallback: (cb: () => void) => void }).requestIdleCallback(() => {
+          startIdlePreload();
+        });
+      } else {
+        startIdlePreload();
+      }
+    }, 3200);
+
     animationFrameId = requestAnimationFrame(loop);
 
     return () => {
+      isDestroyed = true;
+      if (idleTimer) clearTimeout(idleTimer);
       window.removeEventListener("resize", resizeCanvas);
       window.removeEventListener("scroll", updateScrollTarget);
       cancelAnimationFrame(animationFrameId);

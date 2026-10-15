@@ -417,36 +417,42 @@ function Hero() {
       id="home"
       className="relative min-h-[92vh] flex flex-col justify-center mx-auto max-w-7xl px-4 py-12 md:px-8 md:py-24"
     >
-      <div className="max-w-3xl rounded-3xl bg-white p-6 sm:p-10 md:p-14 border border-gold/40 shadow-2xl">
-        <div className="flex items-center gap-4 mb-6">
+      <div className="max-w-3xl rounded-3xl bg-white p-6 sm:p-10 md:p-12 border-2 border-gold/50 shadow-2xl">
+        {/* Official Store Branding Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center gap-5 mb-6 pb-6 border-b border-slate-200">
           <img
             src="/logo.webp"
-            alt="Shirdi Sai Marbles Official Logo"
+            alt="Shirdi Sai Marbles & Tiles Emblem"
             width={260}
             height={390}
-            className="h-20 w-auto sm:h-24 md:h-28 object-contain rounded-2xl shadow-xl border-2 border-gold/70 p-1 bg-slate-950 shrink-0"
+            className="h-24 w-auto sm:h-28 object-contain rounded-2xl shadow-xl border-2 border-gold/70 p-1 bg-slate-950 shrink-0 self-start sm:self-center"
           />
           <div>
-            <div className="inline-flex items-center gap-1.5 rounded-full bg-gold/15 px-3 py-1 text-xs font-bold text-gold uppercase tracking-wider border border-gold/30">
-              <Sparkles className="h-3.5 w-3.5" />
-              <span>{siteData.tagline}</span>
+            <div className="inline-flex items-center gap-1.5 rounded-full bg-gold/15 px-3 py-1 text-xs font-bold text-gold uppercase tracking-wider border border-gold/30 mb-2">
+              <Award className="h-3.5 w-3.5" />
+              <span>16 Years of Excellence (Since 2010)</span>
             </div>
-            <p className="mt-2 font-odia text-base sm:text-lg font-bold text-gold">
+            <h1 className="font-display text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight">
+              Shirdi Sai <span className="text-primary">Marbles &amp; Tiles</span>
+            </h1>
+            <p className="mt-1 font-odia text-lg sm:text-xl font-bold text-gold">
               {siteData.nameOdia}
             </p>
-            <p className="text-xs font-bold uppercase tracking-wider text-slate-600 mt-0.5">
-              Official Flagship Showroom • Jajpur Town
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-600 mt-1">
+              Raniramchandrapur, Gariapur, Jajpur Town, Odisha - 755001
             </p>
           </div>
         </div>
 
-        <h1 className="text-3xl leading-[1.12] sm:text-5xl md:text-6xl text-slate-900 font-extrabold font-display">
-          Find the Perfect <span className="text-primary">Tiles &amp; Marble</span> for Your Dream Home
-        </h1>
-
-        <p className="mt-4 max-w-2xl text-base text-slate-800 font-medium sm:text-lg leading-relaxed">
-          Explore a rich collection of premium vitrified floor tiles, 3D wall tiles, Italian &amp; Indian marble, and heat-resistant granite slabs at <strong>direct factory wholesale rates</strong>.
-        </p>
+        {/* Store Brand Value Proposition */}
+        <div className="space-y-3">
+          <p className="text-xl sm:text-2xl font-bold font-display text-slate-900">
+            Odisha&apos;s Leading Wholesale Hub for Premium Tiles, Marble &amp; Granite
+          </p>
+          <p className="text-base sm:text-lg text-slate-700 font-medium leading-relaxed">
+            Direct factory distributor supplying high-gloss vitrified tiles, 3D designer wall tiles, imported Italian marble, and heavy-duty granite across Odisha at direct factory wholesale rates.
+          </p>
+        </div>
 
         {/* Quick action buttons */}
         <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -457,6 +463,7 @@ function Hero() {
             )}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Get WhatsApp Price List for Shirdi Sai Marbles & Tiles"
             className="btn btn-whatsapp text-base shadow-lg"
           >
             <MessageCircle className="h-5 w-5" /> Get WhatsApp Price List
@@ -465,7 +472,7 @@ function Hero() {
             Explore 8 Collections <ArrowRight className="h-4 w-4" />
           </a>
           <a href="#visit" className="btn btn-outline text-base">
-            <MapPin className="h-4 w-4" /> Showroom Map
+            <MapPin className="h-4 w-4" /> Showroom Location
           </a>
         </div>
 

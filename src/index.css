@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+@layer theme {
+  :root {
+    --font-sans: "DM Sans", "Noto Sans Oriya", system-ui, sans-serif;
+    --font-display: "Cormorant Garamond", Georgia, serif;
+    --font-odia: "Noto Sans Oriya", "DM Sans", sans-serif;
+
+    --radius: 0.75rem;
+
+    /* Ultra high-contrast colors for maximum readability */
+    --background: #fdfbf7;
+    --foreground: #0f172a; /* Slate 900 - Deep, bold, dark text */
+    --card: #ffffff;
+    --card-foreground: #0f172a;
+    --popover: #ffffff;
+    --popover-foreground: #0f172a;
+    --primary: #831843; /* Deep luxury royal burgundy / wine */
+    --primary-foreground: #ffffff;
+    --secondary: #f4efe6; /* Warm Italian travertine tone */
+    --secondary-foreground: #0f172a;
+    --muted: #f1ede4;
+    --muted-foreground: #334155; /* Slate 700 - Dark, sharp, high contrast */
+    --accent: #b45309; /* Warm gold/amber */
+    --accent-foreground: #ffffff;
+    --gold: #b45309;
+    --ink: #0f172a; /* Deep ink slate */
+    --ink-foreground: #f8fafc;
+    --destructive: #b91c1c;
+    --destructive-foreground: #ffffff;
+    --border: #cbd5e1; /* Slate 300 - Clean visible borders */
+    --input: #cbd5e1;
+    --ring: #831843;
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-gold: var(--gold);
+    --color-ink: var(--ink);
+    --color-ink-foreground: var(--ink-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    background-color: #0b0b0e;
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+    font-weight: 600;
+    color: #0f172a;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-odia {
+  font-family: var(--font-odia);
+}
+
+.eyebrow {
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #92400e; /* Deep dark amber gold */
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.hero-scrim {
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.4) 0%,
+    rgba(15, 23, 42, 0.8) 100%
+  );
+}
+
+.btn {
+  border-radius: var(--radius);
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-primary:hover {
+  background: #701437;
+  box-shadow: 0 4px 14px rgba(131, 24, 67, 0.35);
+}
+
+.btn-whatsapp {
+  background: #15803d; /* Vibrant dark emerald WhatsApp green */
+  color: #ffffff;
+}
+
+.btn-whatsapp:hover {
+  background: #166534;
+  box-shadow: 0 4px 14px rgba(22, 101, 52, 0.35);
+}
+
+.btn-outline {
+  border: 1.5px solid #0f172a;
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.btn-outline:hover {
+  background: #0f172a;
+  color: #ffffff;
+}
+
+/* Luxury minimal custom scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(11, 11, 14, 0.7);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}

@@ -3,71 +3,76 @@
 @theme {
   --font-sans: "DM Sans", "Noto Sans Oriya", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-royal: "Cinzel", "Cormorant Garamond", Georgia, serif;
   --font-odia: "Noto Sans Oriya", "DM Sans", sans-serif;
 
-  --color-background: #fdfbf7;
-  --color-foreground: #0f172a;
-  --color-card: #ffffff;
-  --color-card-foreground: #0f172a;
-  --color-popover: #ffffff;
-  --color-popover-foreground: #0f172a;
-  --color-primary: #831843;
+  --color-background: #08090d;
+  --color-foreground: #f8fafc;
+  --color-card: rgba(8, 12, 20, 0.4);
+  --color-card-foreground: #f8fafc;
+  --color-popover: #0b0f19;
+  --color-popover-foreground: #f8fafc;
+  --color-primary: #be123c;
   --color-primary-foreground: #ffffff;
-  --color-secondary: #f4efe6;
-  --color-secondary-foreground: #0f172a;
-  --color-muted: #f1ede4;
-  --color-muted-foreground: #334155;
-  --color-accent: #92400e;
-  --color-accent-foreground: #ffffff;
-  --color-gold: #92400e;
-  --color-ink: #0f172a;
+  --color-secondary: rgba(17, 24, 39, 0.4);
+  --color-secondary-foreground: #f8fafc;
+  --color-muted: rgba(30, 41, 59, 0.4);
+  --color-muted-foreground: #94a3b8;
+  --color-accent: #f59e0b;
+  --color-accent-foreground: #08090d;
+  --color-gold: #f59e0b;
+  --color-gold-light: #fef08a;
+  --color-gold-dark: #b45309;
+  --color-ink: #08090d;
   --color-ink-foreground: #f8fafc;
-  --color-destructive: #b91c1c;
+  --color-destructive: #ef4444;
   --color-destructive-foreground: #ffffff;
-  --color-border: #cbd5e1;
-  --color-input: #cbd5e1;
-  --color-ring: #831843;
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-input: rgba(255, 255, 255, 0.15);
+  --color-ring: #f59e0b;
 }
 
 :root {
   --radius: 0.75rem;
   --font-sans: "DM Sans", "Noto Sans Oriya", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-royal: "Cinzel", "Cormorant Garamond", Georgia, serif;
   --font-odia: "Noto Sans Oriya", "DM Sans", sans-serif;
 
-  --background: #fdfbf7;
-  --foreground: #0f172a;
-  --card: #ffffff;
-  --card-foreground: #0f172a;
-  --popover: #ffffff;
-  --popover-foreground: #0f172a;
-  --primary: #831843;
+  --background: #08090d;
+  --foreground: #f8fafc;
+  --card: rgba(8, 12, 20, 0.4);
+  --card-foreground: #f8fafc;
+  --popover: #0b0f19;
+  --popover-foreground: #f8fafc;
+  --primary: #be123c;
   --primary-foreground: #ffffff;
-  --secondary: #f4efe6;
-  --secondary-foreground: #0f172a;
-  --muted: #f1ede4;
-  --muted-foreground: #334155;
-  --accent: #92400e;
-  --accent-foreground: #ffffff;
-  --gold: #92400e;
-  --ink: #0f172a;
+  --secondary: rgba(17, 24, 39, 0.4);
+  --secondary-foreground: #f8fafc;
+  --muted: rgba(30, 41, 59, 0.4);
+  --muted-foreground: #94a3b8;
+  --accent: #f59e0b;
+  --accent-foreground: #08090d;
+  --gold: #f59e0b;
+  --ink: #08090d;
   --ink-foreground: #f8fafc;
-  --destructive: #b91c1c;
+  --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #cbd5e1;
-  --input: #cbd5e1;
-  --ring: #831843;
+  --border: rgba(255, 255, 255, 0.12);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #f59e0b;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
     font-size: 16px;
+    background-color: #08090d;
   }
 
   body {
-    background-color: #fdfbf7;
-    color: #0f172a;
+    background-color: #08090d;
+    color: #f8fafc;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -78,7 +83,7 @@
     font-family: var(--font-display);
     letter-spacing: -0.015em;
     font-weight: 600;
-    color: #0f172a;
+    color: #ffffff;
   }
 }
 
@@ -86,24 +91,85 @@
   font-family: var(--font-display);
 }
 
+.font-royal {
+  font-family: var(--font-royal);
+  letter-spacing: 0.04em;
+}
+
 .font-odia {
   font-family: var(--font-odia);
 }
 
 .eyebrow {
-  letter-spacing: 0.22em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: #92400e; /* Deep dark amber gold */
+  color: #f59e0b;
   font-size: 0.75rem;
   font-weight: 700;
 }
 
-.hero-scrim {
+/* Luxury Animated Gold Shining Effect */
+@keyframes goldShineAnim {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.gold-shimmer-text {
   background: linear-gradient(
-    180deg,
-    rgba(15, 23, 42, 0.4) 0%,
-    rgba(15, 23, 42, 0.8) 100%
+    115deg,
+    #fef9c3 0%,
+    #f59e0b 22%,
+    #ffffff 42%,
+    #fef08a 55%,
+    #d97706 78%,
+    #b45309 100%
   );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldShineAnim 6s ease-in-out infinite;
+}
+
+.gold-text {
+  background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+}
+
+.glow-gold-text {
+  text-shadow: 0 0 25px rgba(245, 158, 11, 0.4), 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+/* Ultra-sheer crystal glassmorphism: keeps 3D scroll animation 100% visible */
+.glass-panel {
+  background: rgba(8, 12, 20, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.glass-panel-subtle {
+  background: rgba(8, 12, 20, 0.25);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-panel-gold {
+  background: rgba(8, 12, 20, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(245, 158, 11, 0.4);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 25px rgba(245, 158, 11, 0.15);
 }
 
 .btn {
@@ -115,11 +181,11 @@
   padding: 0.75rem 1.5rem;
   font-size: 0.95rem;
   font-weight: 600;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   cursor: pointer;
   text-decoration: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .btn:active {
@@ -127,35 +193,57 @@
 }
 
 .btn-primary {
-  background: var(--color-primary);
+  background: linear-gradient(135deg, #be123c 0%, #881337 100%);
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  box-shadow: 0 4px 18px rgba(190, 18, 60, 0.4);
 }
 
 .btn-primary:hover {
-  background: #701437;
-  box-shadow: 0 4px 14px rgba(131, 24, 67, 0.35);
+  background: linear-gradient(135deg, #e11d48 0%, #9f1239 100%);
+  box-shadow: 0 6px 24px rgba(225, 29, 72, 0.5);
+  transform: translateY(-1px);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #08090d;
+  font-weight: 700;
+  border: 1px solid rgba(254, 240, 138, 0.7);
+  box-shadow: 0 4px 22px rgba(245, 158, 11, 0.45);
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  box-shadow: 0 6px 30px rgba(251, 191, 36, 0.6);
+  transform: translateY(-1px);
 }
 
 .btn-whatsapp {
-  background: #15803d; /* Vibrant dark emerald WhatsApp green */
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
   color: #ffffff;
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  box-shadow: 0 4px 18px rgba(22, 163, 74, 0.35);
 }
 
 .btn-whatsapp:hover {
-  background: #166534;
-  box-shadow: 0 4px 14px rgba(22, 101, 52, 0.35);
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  box-shadow: 0 6px 24px rgba(34, 197, 94, 0.45);
+  transform: translateY(-1px);
 }
 
 .btn-outline {
-  border: 1.5px solid #0f172a;
-  color: #0f172a;
-  background: rgba(255, 255, 255, 0.85);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
 }
 
 .btn-outline:hover {
-  background: #0f172a;
-  color: #ffffff;
+  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(245, 158, 11, 0.6);
+  color: #fef08a;
+  transform: translateY(-1px);
 }
 
 /* Luxury minimal custom scrollbar */
@@ -164,14 +252,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(11, 11, 14, 0.7);
+  background: rgba(8, 9, 13, 0.85);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(245, 158, 11, 0.35);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(245, 158, 11, 0.7);
 }

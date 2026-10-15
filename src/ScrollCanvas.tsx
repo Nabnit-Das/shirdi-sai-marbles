@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const TOTAL_FRAMES = 300;
 
@@ -9,6 +9,7 @@ function getFramePath(index: number): string {
 
 export function ScrollCanvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const [scrollPercent, setScrollPercent] = useState(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -94,7 +95,11 @@ export function ScrollCanvas() {
 
     function loadFrame(frameNumber: number, onDone?: () => void) {
       if (frameNumber < 1 || frameNumber > TOTAL_FRAMES) return;
-      if (isLoaded[frameNumber] || inFlight[frameNumber]) {
+      if (isLoaded[frameNumber]) {
+        onDone?.();
+        return;
+      }
+      if (inFlight[frameNumber]) {
         onDone?.();
         return;
       }
@@ -108,10 +113,8 @@ export function ScrollCanvas() {
         images[frameNumber] = img;
         isLoaded[frameNumber] = 1;
         inFlight[frameNumber] = 0;
-
-        if (Math.round(currentFrame) === frameNumber) {
-          isCanvasDirty = true;
-        }
+        // Always mark canvas dirty so that newly loaded frame or nearby frame renders immediately!
+        isCanvasDirty = true;
 
         if (img.decode) {
           img.decode().catch(() => {});
@@ -129,7 +132,7 @@ export function ScrollCanvas() {
 
     function preloadNearScroll(centerFrame: number) {
       // Prioritize nearby frames around current scroll direction
-      const range = 6;
+      const range = 15;
       for (let i = 0; i <= range; i++) {
         const next = centerFrame + i;
         if (next <= TOTAL_FRAMES) loadFrame(next);
@@ -144,9 +147,11 @@ export function ScrollCanvas() {
 
       if (maxScroll <= 0) {
         targetFrame = 1;
+        setScrollPercent(0);
       } else {
         const progress = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
         targetFrame = 1 + progress * (TOTAL_FRAMES - 1);
+        setScrollPercent(Math.round(progress * 100));
       }
 
       preloadNearScroll(Math.round(targetFrame));
@@ -157,7 +162,7 @@ export function ScrollCanvas() {
 
       // Ultra-smooth easing / inertia lerp
       if (Math.abs(delta) > 0.001) {
-        currentFrame += delta * 0.14;
+        currentFrame += delta * 0.18;
       } else {
         currentFrame = targetFrame;
       }
@@ -173,30 +178,30 @@ export function ScrollCanvas() {
       animationFrameId = requestAnimationFrame(loop);
     }
 
-    // Defer non-critical background preloading until after initial page load & idle
+    // Fast progressive background preloading
     function startIdlePreload() {
       const nav = navigator as unknown as { connection?: { saveData?: boolean } };
       if (nav.connection?.saveData) return;
 
       const queue: number[] = [];
-      // 1. Keyframes first (every 10th frame)
-      for (let i = 10; i <= TOTAL_FRAMES; i += 10) {
+      // 1. Keyframes first (every 5th frame for immediate coverage across entire scroll)
+      for (let i = 5; i <= TOTAL_FRAMES; i += 5) {
         if (!isLoaded[i]) queue.push(i);
       }
       // 2. Intermediate frames
       for (let i = 2; i <= TOTAL_FRAMES; i++) {
-        if (i % 10 !== 0 && !isLoaded[i]) queue.push(i);
+        if (i % 5 !== 0 && !isLoaded[i]) queue.push(i);
       }
 
       let qIndex = 0;
-      const CONCURRENCY = 2; // Low concurrency to prevent bandwidth choking
+      const CONCURRENCY = 4;
 
       function nextWorker() {
         if (isDestroyed || qIndex >= queue.length) return;
         const fn = queue[qIndex++];
         loadFrame(fn, () => {
           if (!isDestroyed) {
-            setTimeout(nextWorker, 40); // Gentle spacing between frames
+            setTimeout(nextWorker, 15);
           }
         });
       }
@@ -212,19 +217,16 @@ export function ScrollCanvas() {
     resizeCanvas();
     updateScrollTarget();
 
-    // 1. Load initial frame immediately
+    // 1. Load initial frames immediately
     loadFrame(1);
+    for (let f = 2; f <= 30; f++) {
+      loadFrame(f);
+    }
 
-    // 2. Start background preload after 3 seconds of idle time (ensures FCP & LCP finish unhindered)
+    // 2. Start background keyframe preload after 200ms
     idleTimer = setTimeout(() => {
-      if ("requestIdleCallback" in window) {
-        (window as Window & { requestIdleCallback: (cb: () => void) => void }).requestIdleCallback(() => {
-          startIdlePreload();
-        });
-      } else {
-        startIdlePreload();
-      }
-    }, 3200);
+      startIdlePreload();
+    }, 200);
 
     animationFrameId = requestAnimationFrame(loop);
 
@@ -238,14 +240,39 @@ export function ScrollCanvas() {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      id="scroll-canvas"
-      className="fixed inset-0 w-screen h-screen pointer-events-none z-0"
-      style={{
-        display: "block",
-        backgroundColor: "#0b0b0e",
-      }}
-    />
+    <>
+      {/* 3D Scroll Canvas: fixed at z-0 so it is NEVER hidden behind body background */}
+      <canvas
+        ref={canvasRef}
+        id="scroll-canvas"
+        className="fixed inset-0 w-full h-full pointer-events-none z-0"
+        style={{
+          display: "block",
+          width: "100vw",
+          height: "100vh",
+          backgroundColor: "#08090d",
+        }}
+      />
+
+      {/* Subtle luxury ambient vignette overlay: soft dark gradient at edges for text readability while leaving 3D animation bright */}
+      <div
+        className="fixed inset-0 w-full h-full pointer-events-none z-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, rgba(8, 9, 13, 0.05) 0%, rgba(8, 9, 13, 0.4) 65%, rgba(8, 9, 13, 0.8) 100%)",
+        }}
+      />
+
+      {/* Floating 3D Tour Status HUD at bottom right */}
+      <div className="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-30 pointer-events-none flex items-center gap-2.5 glass-panel-gold px-3.5 py-1.5 rounded-full border border-amber-400/40 shadow-xl backdrop-blur-xl">
+        <span className="relative flex h-2 w-2">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+        </span>
+        <span className="text-[11px] font-bold text-amber-200 tracking-wider uppercase">
+          3D Tour: {scrollPercent}%
+        </span>
+      </div>
+    </>
   );
 }

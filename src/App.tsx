@@ -163,8 +163,9 @@ export const galleryItems = [
 
 export const navLinks = [
   { href: "#home", label: "Home" },
+  { href: "#tour", label: "3D Virtual Tour" },
   { href: "#calculator", label: "Tile Calculator" },
-  { href: "#products", label: "Products" },
+  { href: "#products", label: "Collections" },
   { href: "#gallery", label: "Gallery" },
   { href: "#why-us", label: "Why Choose Us" },
   { href: "#about", label: "About" },
@@ -250,30 +251,30 @@ export const faqs = [
   },
 ];
 
-// Top announcement bar
+// Top announcement bar in sheer crystal style
 function TopBar() {
   return (
-    <div className="bg-ink text-white px-4 py-2 text-xs font-medium border-b border-white/10">
+    <div className="bg-black/40 backdrop-blur-md text-slate-300 px-4 py-2 text-xs font-medium border-b border-white/10 relative z-30">
       <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
         <div className="flex items-center gap-2 justify-center flex-wrap">
-          <span className="inline-flex items-center gap-1 text-gold font-bold">
-            <MapPin className="h-3.5 w-3.5" /> Raniramchandrapur, Gariapur, Jajpur Town - 755001
+          <span className="inline-flex items-center gap-1 text-amber-400 font-bold">
+            <MapPin className="h-3.5 w-3.5 text-amber-400" /> Raniramchandrapur, Gariapur, Jajpur Town - 755001
           </span>
-          <span className="hidden sm:inline text-white/40">•</span>
+          <span className="hidden sm:inline text-white/30">•</span>
           <span className="text-white/80">Mon – Sat: 9:00 AM – 8:00 PM | Sun: 9:00 AM – 7:00 PM</span>
         </div>
         <div className="flex items-center gap-4">
           <a
             href={getTelUrl(siteData.phones[0])}
-            className="hover:text-gold transition-colors inline-flex items-center gap-1 font-semibold"
+            className="hover:text-amber-400 transition-colors inline-flex items-center gap-1 font-semibold text-white/90"
           >
-            <Phone className="h-3 w-3" /> +91 {siteData.phones[0]}
+            <Phone className="h-3 w-3 text-amber-400" /> +91 {siteData.phones[0]}
           </a>
           <a
             href={getWhatsAppUrl(siteData.phones[0])}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-green-400 text-green-400 font-semibold inline-flex items-center gap-1"
+            className="hover:text-emerald-400 text-emerald-400 font-semibold inline-flex items-center gap-1"
           >
             <MessageCircle className="h-3 w-3" /> WhatsApp Quote
           </a>
@@ -283,7 +284,7 @@ function TopBar() {
   );
 }
 
-// Header Navbar
+// Header Navbar with Sheer Luxury Glassmorphism
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -295,21 +296,21 @@ function Header() {
   }, [isOpen]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-white/95 backdrop-blur-md shadow-sm">
+    <header className="sticky top-0 z-40 border-b border-amber-500/20 bg-slate-950/40 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 md:px-8">
-        <a href="#home" className="min-w-0 flex items-center gap-3 group">
+        <a href="#home" className="min-w-0 flex items-center gap-3.5 group">
           <img
             src="/logo.webp"
             alt="Shirdi Sai Marbles & Tiles Logo"
             width={260}
             height={390}
-            className="h-12 sm:h-14 w-auto object-contain rounded-xl border border-gold/60 shadow-md group-hover:scale-105 transition-transform bg-slate-950 p-0.5 shrink-0"
+            className="h-12 sm:h-14 w-auto object-contain rounded-xl border border-amber-500/60 shadow-[0_0_15px_rgba(245,158,11,0.3)] group-hover:scale-105 transition-transform bg-slate-950/80 p-0.5 shrink-0"
           />
           <div className="flex flex-col min-w-0">
-            <span className="block truncate font-display text-xl sm:text-2xl font-bold leading-tight text-foreground md:text-3xl">
-              Shirdi Sai <span className="text-primary font-bold">Marbles &amp; Tiles</span>
+            <span className="block truncate font-royal text-xl sm:text-2xl font-bold leading-tight text-white md:text-3xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+              Shirdi Sai <span className="gold-shimmer-text font-serif italic font-normal">Marbles &amp; Tiles</span>
             </span>
-            <span className="block truncate font-odia text-xs font-semibold text-gold">
+            <span className="block truncate font-odia text-xs font-semibold text-amber-300 drop-shadow glow-gold-text">
               {siteData.nameOdia}
             </span>
           </div>
@@ -320,12 +321,12 @@ function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-semibold text-slate-800 hover:text-primary transition-colors py-1"
+              className="text-sm font-semibold text-slate-100 hover:text-amber-400 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-[2px] after:bg-amber-400 after:transition-all drop-shadow"
             >
               {link.label}
             </a>
           ))}
-          <a href="#visit" className="btn btn-primary text-sm shadow-md">
+          <a href="#visit" className="btn btn-gold text-xs shadow-md">
             Visit Showroom
           </a>
         </nav>
@@ -340,32 +341,32 @@ function Header() {
             <MessageCircle className="h-4 w-4" /> Quote
           </a>
           <button
-            className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-border text-foreground bg-white"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-white/20 text-white bg-slate-900/60 backdrop-blur-md"
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isOpen ? <X className="h-6 w-6 text-amber-400" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
 
       {isOpen && (
         <nav
-          className="h-[calc(100dvh-5rem)] border-t border-border bg-white px-6 py-6 overflow-y-auto lg:hidden"
+          className="h-[calc(100dvh-5rem)] border-t border-amber-500/20 bg-slate-950/95 backdrop-blur-2xl px-6 py-6 overflow-y-auto lg:hidden"
           aria-label="Mobile Navigation"
         >
-          <div className="flex items-center gap-3 pb-4 mb-4 border-b border-border">
+          <div className="flex items-center gap-3 pb-4 mb-4 border-b border-white/10">
             <img
               src="/logo.webp"
               alt="Shirdi Sai Marbles Logo"
               width={260}
               height={390}
-              className="h-12 w-auto object-contain rounded-xl border border-gold/60 shadow-sm bg-slate-950 p-0.5"
+              className="h-12 w-auto object-contain rounded-xl border border-amber-500/50 shadow-sm bg-slate-950 p-0.5"
             />
             <div>
-              <p className="font-display text-lg font-bold text-slate-900 leading-tight">Shirdi Sai Marbles</p>
-              <p className="font-odia text-xs font-semibold text-gold">{siteData.nameOdia}</p>
+              <p className="font-display text-lg font-bold text-white leading-tight">Shirdi Sai Marbles</p>
+              <p className="font-odia text-xs font-semibold text-amber-400">{siteData.nameOdia}</p>
             </div>
           </div>
           <ul className="space-y-2">
@@ -374,7 +375,7 @@ function Header() {
                 <a
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block border-b border-border/40 py-3.5 font-display text-xl font-bold text-foreground hover:text-primary"
+                  className="block border-b border-white/10 py-3.5 font-display text-xl font-bold text-slate-100 hover:text-amber-400"
                 >
                   {link.label}
                 </a>
@@ -385,7 +386,7 @@ function Header() {
             <a
               href="#visit"
               onClick={() => setIsOpen(false)}
-              className="btn btn-primary w-full text-base"
+              className="btn btn-gold w-full text-base"
             >
               Visit Our Showroom
             </a>
@@ -401,7 +402,7 @@ function Header() {
               href={getTelUrl(siteData.phones[0])}
               className="btn btn-outline w-full text-base"
             >
-              <Phone className="h-5 w-5" /> Call +91 {siteData.phones[0]}
+              <Phone className="h-5 w-5 text-amber-400" /> Call +91 {siteData.phones[0]}
             </a>
           </div>
         </nav>
@@ -410,52 +411,49 @@ function Header() {
   );
 }
 
-// Hero Section with high-contrast architectural card over the scroll animation
+// Hero Section: Completely Open & Unobstructed 3D Background with Floating Luxury Typography
 function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[92vh] flex flex-col justify-center mx-auto max-w-7xl px-4 py-12 md:px-8 md:py-24"
+      className="relative min-h-[90vh] flex flex-col justify-between mx-auto max-w-7xl px-4 pt-4 pb-6 md:px-8 md:pt-6 md:pb-8"
     >
-      <div className="max-w-3xl rounded-3xl bg-white p-6 sm:p-10 md:p-12 border-2 border-gold/50 shadow-2xl">
-        {/* Official Store Branding Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-5 mb-6 pb-6 border-b border-slate-200">
-          <img
-            src="/logo.webp"
-            alt="Shirdi Sai Marbles & Tiles Emblem"
-            width={260}
-            height={390}
-            className="h-24 w-auto sm:h-28 object-contain rounded-2xl shadow-xl border-2 border-gold/70 p-1 bg-slate-950 shrink-0 self-start sm:self-center"
-          />
-          <div>
-            <div className="inline-flex items-center gap-1.5 rounded-full bg-gold/15 px-3 py-1 text-xs font-bold text-gold uppercase tracking-wider border border-gold/30 mb-2">
-              <Award className="h-3.5 w-3.5" />
-              <span>16 Years of Excellence (Since 2010)</span>
-            </div>
-            <h1 className="font-display text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight">
-              Shirdi Sai <span className="text-primary">Marbles &amp; Tiles</span>
-            </h1>
-            <p className="mt-1 font-odia text-lg sm:text-xl font-bold text-gold">
-              {siteData.nameOdia}
-            </p>
-            <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-600 mt-1">
-              Raniramchandrapur, Gariapur, Jajpur Town, Odisha - 755001
-            </p>
-          </div>
+      {/* Brand & Value Proposition Floating Over 3D Scene - NO BLOCKING BOX! */}
+      <div className="max-w-3xl">
+        {/* Floating Excellence Badge */}
+        <div className="inline-flex items-center gap-2 rounded-full bg-black/50 backdrop-blur-md px-3.5 py-1 text-[11px] font-royal font-bold text-amber-300 uppercase tracking-[0.2em] border border-amber-500/50 mb-3 shadow-[0_0_20px_rgba(245,158,11,0.25)]">
+          <Award className="h-3.5 w-3.5 text-amber-400" />
+          <span>ESTD. 2010 • 16 Years of Family Trust &amp; Craftsmanship</span>
         </div>
 
-        {/* Store Brand Value Proposition */}
-        <div className="space-y-3">
-          <p className="text-xl sm:text-2xl font-bold font-display text-slate-900">
-            Odisha&apos;s Leading Wholesale Hub for Premium Tiles, Marble &amp; Granite
-          </p>
-          <p className="text-base sm:text-lg text-slate-700 font-medium leading-relaxed">
-            Direct factory distributor supplying high-gloss vitrified tiles, 3D designer wall tiles, imported Italian marble, and heavy-duty granite across Odisha at direct factory wholesale rates.
-          </p>
-        </div>
+        {/* Grand Brand Headline with Animated Gold Shimmer */}
+        <h1 className="font-royal text-4xl sm:text-6xl md:text-7xl font-bold text-white leading-[1.04] tracking-tight drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
+          Shirdi Sai{" "}
+          <span className="gold-shimmer-text font-serif italic font-normal block sm:inline tracking-normal">
+            Marbles &amp; Tiles
+          </span>
+        </h1>
 
-        {/* Quick action buttons */}
-        <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+        {/* Odia Title with Warm Candlelight Glow */}
+        <p className="mt-2 font-odia text-xl sm:text-2xl font-semibold text-amber-300 drop-shadow-[0_2px_14px_rgba(0,0,0,0.95)] glow-gold-text">
+          {siteData.nameOdia}
+        </p>
+
+        {/* Location & Heritage Line */}
+        <p className="mt-1.5 text-xs sm:text-sm font-medium uppercase tracking-[0.25em] text-amber-200/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
+          Raniramchandrapur, Gariapur • Jajpur Town, Odisha - 755001
+        </p>
+
+        {/* Human-Touched Value Proposition */}
+        <p className="mt-3 text-lg sm:text-xl text-white font-display font-medium leading-relaxed drop-shadow-[0_3px_16px_rgba(0,0,0,0.95)] max-w-2xl">
+          Odisha&apos;s Flagship Wholesale Sanctuary for Italian Marble, Vitrified Slabs &amp; Designer 3D Wall Tiles.
+        </p>
+        <p className="mt-1.5 text-xs sm:text-sm text-amber-100/90 font-normal leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] max-w-xl">
+          Direct from our family showroom to your dream home. Touch, feel and compare over 500+ genuine first-grade slabs with personalized guidance and wholesale pricing.
+        </p>
+
+        {/* Quick action buttons floating directly on 3D view */}
+        <div className="mt-5 flex flex-wrap gap-3 sm:gap-4">
           <a
             href={getWhatsAppUrl(
               siteData.phones[0],
@@ -464,60 +462,141 @@ function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Get WhatsApp Price List for Shirdi Sai Marbles & Tiles"
-            className="btn btn-whatsapp text-base shadow-lg"
+            className="btn btn-whatsapp text-sm font-bold shadow-[0_4px_25px_rgba(22,163,74,0.45)]"
           >
-            <MessageCircle className="h-5 w-5" /> Get WhatsApp Price List
+            <MessageCircle className="h-4.5 w-4.5" /> Get WhatsApp Price List
           </a>
-          <a href="#products" className="btn btn-primary text-base shadow-lg">
+          <a href="#products" className="btn btn-gold text-sm font-bold shadow-[0_4px_25px_rgba(245,158,11,0.5)]">
             Explore 8 Collections <ArrowRight className="h-4 w-4" />
           </a>
-          <a href="#visit" className="btn btn-outline text-base">
-            <MapPin className="h-4 w-4" /> Showroom Location
+          <a href="#visit" className="btn btn-outline text-sm font-semibold">
+            <MapPin className="h-4 w-4 text-amber-400" /> Showroom Location
           </a>
         </div>
 
-        {/* Trust Badges */}
-        <div className="mt-8 pt-6 border-t border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center sm:text-left">
-          <div>
-            <p className="text-2xl font-bold font-display text-primary">16 Years</p>
-            <p className="text-xs font-semibold text-slate-700">In Business (Since 2010)</p>
+        {/* Trust Badges - 4 Sleek Floating Glass Pills */}
+        <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-2.5 max-w-2xl">
+          <div className="rounded-xl bg-black/50 backdrop-blur-md px-3.5 py-2 border border-amber-500/25 shadow-lg hover:border-amber-400/50 transition-all">
+            <p className="text-xl sm:text-2xl font-royal font-bold gold-shimmer-text">16 Years</p>
+            <p className="text-[11px] font-medium text-slate-200">Family Trust</p>
           </div>
-          <div>
-            <p className="text-2xl font-bold font-display text-primary">5,000+</p>
-            <p className="text-xs font-semibold text-slate-700">Homes Completed</p>
+          <div className="rounded-xl bg-black/50 backdrop-blur-md px-3.5 py-2 border border-amber-500/25 shadow-lg hover:border-amber-400/50 transition-all">
+            <p className="text-xl sm:text-2xl font-royal font-bold gold-shimmer-text">5,000+</p>
+            <p className="text-[11px] font-medium text-slate-200">Homes Built</p>
           </div>
-          <div>
-            <p className="text-2xl font-bold font-display text-primary">500+</p>
-            <p className="text-xs font-semibold text-slate-700">Live Stock Designs</p>
+          <div className="rounded-xl bg-black/50 backdrop-blur-md px-3.5 py-2 border border-amber-500/25 shadow-xl hover:border-amber-400/50 transition-all">
+            <p className="text-xl sm:text-2xl font-royal font-bold gold-shimmer-text">500+</p>
+            <p className="text-[11px] font-medium text-slate-200">Live Slabs</p>
           </div>
-          <div>
-            <p className="text-2xl font-bold font-display text-gold flex items-center justify-center sm:justify-start gap-1">
-              <Star className="h-5 w-5 fill-current" /> 4.9 / 5
+          <div className="rounded-xl bg-black/50 backdrop-blur-md px-3.5 py-2 border border-amber-500/25 shadow-xl hover:border-amber-400/50 transition-all">
+            <p className="text-xl sm:text-2xl font-royal font-bold text-amber-300 flex items-center gap-1.5 glow-gold-text">
+              <Star className="h-4 w-4 fill-current text-amber-400" /> 4.9 / 5
             </p>
-            <p className="text-xs font-semibold text-slate-700">Customer Rating</p>
+            <p className="text-[11px] font-medium text-slate-200">Customer Love</p>
           </div>
         </div>
       </div>
 
-      {/* Interactive scroll cue */}
-      <div className="mt-8 self-start flex items-center gap-3 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full border border-slate-300 shadow-md">
-        <div className="w-5 h-8 border-2 border-slate-700 rounded-full flex justify-center pt-1.5">
-          <div className="w-1.5 h-2.5 bg-primary rounded-full animate-bounce"></div>
-        </div>
-        <span className="text-xs font-bold text-slate-800 tracking-wide uppercase">
-          Scroll down to tour the marble showroom
-        </span>
+      {/* Prominent, Centered, Animated Scroll Down Indicator for the 3D Showroom Walkthrough */}
+      <div className="mt-6 self-center flex flex-col items-center gap-1.5 cursor-pointer group">
+        <a
+          href="#tour"
+          className="flex flex-col items-center gap-2 text-center transition-all hover:scale-105"
+        >
+          <div className="w-6 h-10 border-2 border-amber-400 rounded-full flex justify-center pt-1.5 shadow-[0_0_25px_rgba(245,158,11,0.7)] bg-black/60 backdrop-blur-md">
+            <div className="w-1.5 h-3 bg-gradient-to-b from-amber-200 to-amber-500 rounded-full animate-bounce shadow-[0_0_10px_rgba(245,158,11,0.9)]"></div>
+          </div>
+          <div className="flex flex-col items-center">
+            <span className="text-xs sm:text-sm font-royal font-bold gold-shimmer-text tracking-[0.25em] uppercase drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
+              Scroll Down To Tour 3D Showroom
+            </span>
+            <span className="text-[11px] text-amber-100/90 font-medium tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+              300 Cinematic Frames • Architectural Walkthrough
+            </span>
+          </div>
+          <div className="flex flex-col items-center -space-y-2 text-amber-400 animate-pulse mt-0.5 drop-shadow-[0_0_12px_rgba(245,158,11,0.7)]">
+            <ChevronRight className="h-5 w-5 rotate-90" />
+            <ChevronRight className="h-5 w-5 rotate-90 opacity-70" />
+          </div>
+        </a>
       </div>
     </section>
   );
 }
 
-// Interactive Tile & Square Feet Calculator
+// 3D Tour Milestones Section (Transparent with Floating Tour Cards as you Scroll)
+function TourShowcase() {
+  return (
+    <section id="tour" className="relative z-10 py-16 md:py-24">
+      <div className="mx-auto max-w-7xl px-4 md:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <p className="eyebrow flex items-center justify-center gap-1.5">
+            <Sparkles className="h-4 w-4 text-amber-400" /> Interactive 3D Walkthrough
+          </p>
+          <h2 className="mt-2 text-3xl md:text-5xl font-bold text-white font-display drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+            Tour Our Luxury Residence &amp; Showroom
+          </h2>
+          <p className="mt-3 text-base text-slate-200 font-normal drop-shadow">
+            Continue scrolling to navigate the 3D showroom camera through our premium architectural marble spaces.
+          </p>
+        </div>
+
+        {/* 4 Interactive Floating Tour Stop Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            {
+              step: "01",
+              title: "Grand Italian Foyer",
+              desc: "Polished Statuario & imported white marble with high-reflective gloss.",
+              tag: "Frames 1 – 75",
+            },
+            {
+              step: "02",
+              title: "Vitrified Living Hall",
+              desc: "Large format 800x1600mm double charge vitrified slabs for open rooms.",
+              tag: "Frames 76 – 150",
+            },
+            {
+              step: "03",
+              title: "Granite & Stone Gallery",
+              desc: "Heavy-duty Jet Black & Tan Brown gangsaw granite for countertops.",
+              tag: "Frames 151 – 225",
+            },
+            {
+              step: "04",
+              title: "3D Wall Elevation Hall",
+              desc: "Textured elevation tiles and Moroccan accents for vertical luxury.",
+              tag: "Frames 226 – 300",
+            },
+          ].map((item) => (
+            <div
+              key={item.step}
+              className="rounded-2xl bg-black/40 backdrop-blur-md p-5 border border-amber-500/30 hover:border-amber-400 transition-all text-white shadow-xl flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-display text-2xl font-bold gold-text">{item.step}</span>
+                  <span className="text-[10px] uppercase font-bold text-amber-300 bg-amber-500/20 px-2 py-0.5 rounded-full border border-amber-500/30">
+                    {item.tag}
+                  </span>
+                </div>
+                <h3 className="font-display text-xl font-bold text-white">{item.title}</h3>
+                <p className="text-xs text-slate-300 mt-1 leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Interactive Tile & Square Feet Calculator in Translucent Luxury Glass
 function TileCalculator() {
   const [length, setLength] = useState<string>("15");
   const [width, setWidth] = useState<string>("12");
   const [includeWastage, setIncludeWastage] = useState<boolean>(true);
-  const [tileSize, setTileSize] = useState<string>("600x1200"); // 600x1200mm = ~7.75 sqft per tile (2 tiles/box = 15.5 sqft)
+  const [tileSize, setTileSize] = useState<string>("600x1200");
 
   const numLength = parseFloat(length) || 0;
   const numWidth = parseFloat(width) || 0;
@@ -526,10 +605,10 @@ function TileCalculator() {
 
   // Box coverage mapping
   const boxSqFtMap: Record<string, number> = {
-    "600x1200": 15.5, // 2 tiles of 2x4 ft = ~15.5 sqft
-    "600x600": 15.5,  // 4 tiles of 2x2 ft = ~16 sqft
-    "800x1600": 27.5, // 2 tiles = ~27.5 sqft
-    "300x600": 8.7,   // 8 tiles of wall = ~8.7 sqft
+    "600x1200": 15.5,
+    "600x600": 15.5,
+    "800x1600": 27.5,
+    "300x600": 8.7,
   };
 
   const boxCoverage = boxSqFtMap[tileSize] || 15.5;
@@ -541,62 +620,62 @@ function TileCalculator() {
   };
 
   return (
-    <section id="calculator" className="relative z-10 bg-secondary py-16 md:py-24 border-t border-border">
+    <section id="calculator" className="relative z-10 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-3xl mb-10">
           <p className="eyebrow flex items-center gap-1.5">
             <Calculator className="h-4 w-4" /> Free Planning Tool
           </p>
-          <h2 className="mt-2 text-3xl md:text-5xl font-bold text-slate-900">
+          <h2 className="mt-2 text-3xl md:text-5xl font-bold text-white font-display drop-shadow">
             Tile &amp; Square Feet Estimator
           </h2>
-          <p className="mt-3 text-base text-slate-800 font-medium">
+          <p className="mt-3 text-base text-slate-200 font-normal drop-shadow">
             Enter your room dimensions to instantly estimate total square footage and required boxes. Send the estimate to us on WhatsApp for an exact price quote!
           </p>
         </div>
 
         <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr]">
-          <div className="rounded-2xl bg-white p-6 sm:p-8 border border-border shadow-md space-y-6">
+          <div className="rounded-3xl glass-panel p-6 sm:p-8 border border-white/15 shadow-2xl space-y-6 text-white">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="calc-room-length" className="block text-sm font-bold text-slate-900">Room Length (Feet)</label>
+                <label htmlFor="calc-room-length" className="block text-sm font-bold text-slate-200">Room Length (Feet)</label>
                 <input
                   id="calc-room-length"
                   type="number"
                   min="1"
                   value={length}
                   onChange={(e) => setLength(e.target.value)}
-                  className="mt-2 block w-full rounded-lg border-2 border-slate-300 p-3 text-lg font-bold text-slate-900 focus:border-primary focus:outline-none"
+                  className="mt-2 block w-full rounded-xl border-2 border-slate-700 bg-black/50 p-3 text-lg font-bold text-white focus:border-amber-400 focus:outline-none"
                   placeholder="e.g. 15"
                 />
               </div>
               <div>
-                <label htmlFor="calc-room-width" className="block text-sm font-bold text-slate-900">Room Width (Feet)</label>
+                <label htmlFor="calc-room-width" className="block text-sm font-bold text-slate-200">Room Width (Feet)</label>
                 <input
                   id="calc-room-width"
                   type="number"
                   min="1"
                   value={width}
                   onChange={(e) => setWidth(e.target.value)}
-                  className="mt-2 block w-full rounded-lg border-2 border-slate-300 p-3 text-lg font-bold text-slate-900 focus:border-primary focus:outline-none"
+                  className="mt-2 block w-full rounded-xl border-2 border-slate-700 bg-black/50 p-3 text-lg font-bold text-white focus:border-amber-400 focus:outline-none"
                   placeholder="e.g. 12"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="calc-tile-size" className="block text-sm font-bold text-slate-900">Select Tile Size</label>
+              <label htmlFor="calc-tile-size" className="block text-sm font-bold text-slate-200">Select Tile Size</label>
               <select
                 id="calc-tile-size"
                 aria-label="Select Tile Size"
                 value={tileSize}
                 onChange={(e) => setTileSize(e.target.value)}
-                className="mt-2 block w-full rounded-lg border-2 border-slate-300 p-3 text-base font-bold text-slate-900 focus:border-primary focus:outline-none"
+                className="mt-2 block w-full rounded-xl border-2 border-slate-700 bg-slate-950 p-3 text-base font-bold text-white focus:border-amber-400 focus:outline-none"
               >
-                <option value="600x1200">600x1200 mm (2x4 ft) – Most Popular Floor Tile</option>
-                <option value="600x600">600x600 mm (2x2 ft) – Standard Double Charge Vitrified</option>
-                <option value="800x1600">800x1600 mm (Large Format Luxury Slab)</option>
-                <option value="300x600">300x600 mm (1x2 ft) – Wall &amp; Bathroom Tile</option>
+                <option value="600x1200" className="bg-slate-950 text-white">600x1200 mm (2x4 ft) – Most Popular Floor Tile</option>
+                <option value="600x600" className="bg-slate-950 text-white">600x600 mm (2x2 ft) – Standard Double Charge Vitrified</option>
+                <option value="800x1600" className="bg-slate-950 text-white">800x1600 mm (Large Format Luxury Slab)</option>
+                <option value="300x600" className="bg-slate-950 text-white">300x600 mm (1x2 ft) – Wall &amp; Bathroom Tile</option>
               </select>
             </div>
 
@@ -606,42 +685,42 @@ function TileCalculator() {
                 type="checkbox"
                 checked={includeWastage}
                 onChange={(e) => setIncludeWastage(e.target.checked)}
-                className="h-5 w-5 rounded border-slate-400 text-primary accent-primary"
+                className="h-5 w-5 rounded border-slate-600 bg-slate-900 text-amber-500 accent-amber-500"
               />
-              <span className="text-sm font-semibold text-slate-800">
+              <span className="text-sm font-semibold text-slate-200">
                 Add recommended 10% cutting &amp; corner wastage buffer
               </span>
             </label>
           </div>
 
-          <div className="rounded-2xl bg-white p-6 sm:p-8 border-2 border-gold/60 shadow-lg flex flex-col justify-between">
+          <div className="rounded-3xl glass-panel-gold p-6 sm:p-8 border-2 border-amber-500/50 shadow-2xl flex flex-col justify-between text-white">
             <div>
-              <div className="flex items-center justify-between border-b border-slate-200 pb-4">
-                <span className="text-sm font-bold text-slate-700">Estimated Requirements</span>
-                <span className="rounded-full bg-gold/15 px-2.5 py-0.5 text-xs font-bold text-gold">
+              <div className="flex items-center justify-between border-b border-white/15 pb-4">
+                <span className="text-sm font-bold text-slate-200">Estimated Requirements</span>
+                <span className="rounded-full bg-amber-500/20 px-2.5 py-0.5 text-xs font-bold text-amber-300 border border-amber-500/30">
                   Instant Estimate
                 </span>
               </div>
 
               <div className="mt-6 grid grid-cols-2 gap-4">
-                <div className="rounded-xl bg-slate-50 p-4 border border-slate-200">
-                  <p className="text-xs font-bold text-slate-600 uppercase tracking-wider">Total Area</p>
-                  <p className="mt-1 text-3xl font-extrabold text-slate-900 font-display">
-                    {totalSqFt} <span className="text-sm font-sans font-bold text-slate-600">Sq. Ft.</span>
+                <div className="rounded-xl bg-black/40 p-4 border border-white/10">
+                  <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Area</p>
+                  <p className="mt-1 text-3xl font-extrabold text-white font-display">
+                    {totalSqFt} <span className="text-sm font-sans font-bold text-slate-400">Sq. Ft.</span>
                   </p>
-                  <p className="text-xs text-slate-500 mt-1">({rawSqFt} sq ft actual area)</p>
+                  <p className="text-xs text-slate-400 mt-1">({rawSqFt} sq ft actual area)</p>
                 </div>
 
-                <div className="rounded-xl bg-slate-50 p-4 border border-slate-200">
-                  <p className="text-xs font-bold text-slate-600 uppercase tracking-wider">Boxes Needed</p>
-                  <p className="mt-1 text-3xl font-extrabold text-primary font-display">
-                    ~{boxesNeeded} <span className="text-sm font-sans font-bold text-slate-600">Boxes</span>
+                <div className="rounded-xl bg-black/40 p-4 border border-white/10">
+                  <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Boxes Needed</p>
+                  <p className="mt-1 text-3xl font-extrabold gold-text font-display">
+                    ~{boxesNeeded} <span className="text-sm font-sans font-bold text-slate-400">Boxes</span>
                   </p>
-                  <p className="text-xs text-slate-500 mt-1">({boxCoverage} sq ft / box)</p>
+                  <p className="text-xs text-slate-400 mt-1">({boxCoverage} sq ft / box)</p>
                 </div>
               </div>
 
-              <p className="mt-5 text-xs text-slate-600 leading-relaxed font-medium">
+              <p className="mt-5 text-xs text-slate-300 leading-relaxed font-normal">
                 * Actual coverage may vary based on room corners, diagonal laying, and tile margins. Visit our showroom in Jajpur Town for free laser measurement verification.
               </p>
             </div>
@@ -667,15 +746,15 @@ function Products() {
     filter === "all" ? products : products.filter((p) => p.category === filter);
 
   return (
-    <section id="products" className="relative z-10 bg-white py-20 md:py-28 border-t border-border">
+    <section id="products" className="relative z-10 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-2xl">
             <p className="eyebrow">Our Products &amp; Materials</p>
-            <h2 className="mt-2 text-3xl md:text-5xl font-bold text-slate-900">
+            <h2 className="mt-2 text-3xl md:text-5xl font-bold text-white font-display drop-shadow">
               Tiles, Marble &amp; Granite for Every Space
             </h2>
-            <p className="mt-3 text-base text-slate-800 font-medium">
+            <p className="mt-3 text-base text-slate-200 font-normal drop-shadow">
               Browse our flagship collections below. Click <strong>Enquire on WhatsApp</strong> for live photos of stock in our Jajpur Town showroom.
             </p>
           </div>
@@ -694,8 +773,8 @@ function Products() {
                 onClick={() => setFilter(tab.id)}
                 className={`rounded-full px-4 py-2 text-sm font-bold transition-all cursor-pointer ${
                   filter === tab.id
-                    ? "bg-primary text-white shadow-md"
-                    : "bg-slate-100 text-slate-800 hover:bg-slate-200 border border-slate-300"
+                    ? "btn-gold text-slate-950 shadow-md"
+                    : "glass-panel-subtle text-slate-200 hover:text-white border border-white/10 hover:border-amber-400/40"
                 }`}
               >
                 {tab.label}
@@ -708,9 +787,9 @@ function Products() {
           {filteredProducts.map((product) => (
             <article
               key={product.id}
-              className="group flex flex-col rounded-2xl bg-white p-4 border border-slate-200 shadow-sm hover:shadow-xl hover:border-gold/60 transition-all duration-300"
+              className="group flex flex-col rounded-3xl glass-panel p-4 border border-white/10 hover:border-amber-400/50 hover:shadow-[0_16px_40px_rgba(245,158,11,0.2)] transition-all duration-300 text-white"
             >
-              <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-slate-100">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-black/60 border border-white/10">
                 <img
                   src={product.img}
                   alt={`${product.name} – Shirdi Sai Marbles Jajpur`}
@@ -719,33 +798,33 @@ function Products() {
                   height={1008}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <span className="absolute top-3 left-3 rounded-md bg-slate-900/80 backdrop-blur-sm px-2.5 py-1 text-xs font-bold text-white shadow">
+                <span className="absolute top-3 left-3 rounded-md bg-black/80 backdrop-blur-md px-2.5 py-1 text-xs font-bold text-amber-300 border border-amber-500/30 shadow">
                   {product.categoryLabel}
                 </span>
               </div>
 
-              <h3 className="mt-4 text-2xl font-bold text-slate-900 font-display">
+              <h3 className="mt-4 text-2xl font-bold text-white font-display">
                 {product.name}
               </h3>
 
-              <p className="mt-1 flex-1 text-sm text-slate-700 font-medium leading-relaxed">
+              <p className="mt-1 flex-1 text-sm text-slate-300 font-normal leading-relaxed">
                 {product.desc}
               </p>
 
               {/* Product Specs */}
-              <div className="mt-4 rounded-lg bg-slate-50 p-2.5 text-xs text-slate-800 space-y-1 border border-slate-200">
+              <div className="mt-4 rounded-xl bg-black/40 p-3 text-xs text-slate-300 space-y-1 border border-white/10">
                 <p>
-                  <strong className="text-slate-900">Sizes:</strong> {product.sizes}
+                  <strong className="text-amber-400 font-semibold">Sizes:</strong> {product.sizes}
                 </p>
                 <p>
-                  <strong className="text-slate-900">Finishes:</strong> {product.finish}
+                  <strong className="text-amber-400 font-semibold">Finishes:</strong> {product.finish}
                 </p>
                 <p>
-                  <strong className="text-slate-900">Best For:</strong> {product.bestFor}
+                  <strong className="text-amber-400 font-semibold">Best For:</strong> {product.bestFor}
                 </p>
               </div>
 
-              <div className="mt-4 flex items-center justify-between text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1.5 rounded-md border border-emerald-200">
+              <div className="mt-4 flex items-center justify-between text-xs font-bold text-emerald-400 bg-emerald-950/40 px-3 py-1.5 rounded-lg border border-emerald-500/30">
                 <span>Wholesale Rates</span>
                 <span>In Stock Today</span>
               </div>
@@ -766,16 +845,16 @@ function Products() {
           ))}
         </div>
 
-        <div className="mt-12 rounded-2xl bg-slate-50 p-6 border border-slate-300 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-12 rounded-3xl glass-panel p-6 border border-amber-500/30 flex flex-col sm:flex-row items-center justify-between gap-4 text-white">
           <div className="flex items-center gap-3">
-            <CheckCircle2 className="h-6 w-6 text-emerald-600 shrink-0" />
-            <p className="text-sm font-semibold text-slate-800">
+            <CheckCircle2 className="h-6 w-6 text-emerald-400 shrink-0" />
+            <p className="text-sm font-medium text-slate-200">
               Need custom sizes or bulk supply for commercial projects, apartments, or temples? We offer custom cut slabs and bulk contractor quotes.
             </p>
           </div>
           <a
             href={getTelUrl(siteData.phones[0])}
-            className="btn btn-outline whitespace-nowrap text-sm font-bold shrink-0"
+            className="btn btn-gold whitespace-nowrap text-sm font-bold shrink-0"
           >
             <Phone className="h-4 w-4" /> Talk to Store Manager
           </a>
@@ -805,14 +884,14 @@ function Gallery() {
   }, [selectedIndex]);
 
   return (
-    <section id="gallery" className="relative z-10 bg-secondary py-20 md:py-28 border-t border-border">
+    <section id="gallery" className="relative z-10 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-2xl">
           <p className="eyebrow">Design Inspiration</p>
-          <h2 className="mt-2 text-3xl md:text-5xl font-bold text-slate-900">
+          <h2 className="mt-2 text-3xl md:text-5xl font-bold text-white font-display drop-shadow">
             Realize Your Dream Space
           </h2>
-          <p className="mt-3 text-base text-slate-800 font-medium">
+          <p className="mt-3 text-base text-slate-200 font-normal drop-shadow">
             Explore curated room ideas to visualize finishes in your own home. Click any image to view full details and ask for matching materials.
           </p>
         </div>
@@ -822,7 +901,7 @@ function Gallery() {
             <button
               key={item.label}
               onClick={() => setSelectedIndex(index)}
-              className={`group relative overflow-hidden rounded-2xl text-left cursor-pointer border border-slate-300 shadow-md hover:shadow-xl transition-all ${
+              className={`group relative overflow-hidden rounded-2xl text-left cursor-pointer border border-white/15 hover:border-amber-400/60 shadow-xl transition-all ${
                 index === 0 ? "col-span-2 row-span-2" : ""
               }`}
               aria-label={`View ${item.label} inspiration`}
@@ -835,9 +914,9 @@ function Gallery() {
                 height={800}
                 className="aspect-square h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 via-slate-950/60 to-transparent p-4 text-white">
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent p-4 text-white">
                 <span className="block font-display text-lg sm:text-xl font-bold">{item.label}</span>
-                <span className="block text-xs font-semibold text-gold mt-0.5">{item.tag}</span>
+                <span className="block text-xs font-semibold text-amber-400 mt-0.5">{item.tag}</span>
               </div>
             </button>
           ))}
@@ -850,7 +929,7 @@ function Gallery() {
           role="dialog"
           aria-modal="true"
           aria-label={galleryItems[selectedIndex].label}
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-slate-950/95 backdrop-blur-md p-4 text-white"
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/95 backdrop-blur-md p-4 text-white"
           onClick={() => setSelectedIndex(null)}
         >
           <button
@@ -866,13 +945,13 @@ function Gallery() {
             alt={`${galleryItems[selectedIndex].label} design inspiration`}
             width={1200}
             height={900}
-            className="max-h-[70vh] max-w-full object-contain rounded-xl shadow-2xl border border-white/20"
+            className="max-h-[70vh] max-w-full object-contain rounded-2xl shadow-2xl border border-white/20"
             onClick={(e) => e.stopPropagation()}
           />
 
           <div className="mt-4 text-center" onClick={(e) => e.stopPropagation()}>
             <p className="font-display text-2xl font-bold">{galleryItems[selectedIndex].label}</p>
-            <p className="text-sm text-gold font-semibold">{galleryItems[selectedIndex].tag}</p>
+            <p className="text-sm text-amber-400 font-semibold">{galleryItems[selectedIndex].tag}</p>
           </div>
 
           <div
@@ -924,53 +1003,53 @@ function Gallery() {
   );
 }
 
-// Why Choose Us Section
+// Why Choose Us Section in Translucent Glass
 function WhyChooseUs() {
   return (
-    <section id="why-us" className="relative z-10 bg-white py-20 md:py-28 border-t border-border">
+    <section id="why-us" className="relative z-10 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr] items-start">
           <div>
             <p className="eyebrow">The Shirdi Sai Advantage</p>
-            <h2 className="mt-2 text-3xl md:text-5xl font-bold text-slate-900">
+            <h2 className="mt-2 text-3xl md:text-5xl font-bold text-white font-display drop-shadow">
               Why Homeowners &amp; Builders Choose Us
             </h2>
-            <p className="mt-4 text-base text-slate-800 font-medium leading-relaxed">
+            <p className="mt-4 text-base text-slate-200 font-normal leading-relaxed drop-shadow">
               Flooring and wall tiles remain with your home for a lifetime. Seeing hundreds of options side-by-side in our spacious Jajpur Town showroom ensures you make the right choice with complete confidence.
             </p>
 
-            <div className="mt-8 rounded-2xl bg-slate-50 p-6 border border-slate-200 space-y-4">
+            <div className="mt-8 rounded-3xl glass-panel p-6 border border-amber-500/25 space-y-4 text-white">
               <div className="flex items-center gap-3">
-                <ShieldCheck className="h-6 w-6 text-primary shrink-0" />
-                <span className="text-sm font-bold text-slate-900">Zero Defect Guarantee on First-Grade Boxes</span>
+                <ShieldCheck className="h-6 w-6 text-amber-400 shrink-0" />
+                <span className="text-sm font-bold text-slate-200">Zero Defect Guarantee on First-Grade Boxes</span>
               </div>
               <div className="flex items-center gap-3">
-                <Truck className="h-6 w-6 text-primary shrink-0" />
-                <span className="text-sm font-bold text-slate-900">Fast Doorstep Delivery Across All Jajpur Blocks</span>
+                <Truck className="h-6 w-6 text-amber-400 shrink-0" />
+                <span className="text-sm font-bold text-slate-200">Fast Doorstep Delivery Across All Jajpur Blocks</span>
               </div>
               <div className="flex items-center gap-3">
-                <Clock className="h-6 w-6 text-primary shrink-0" />
-                <span className="text-sm font-bold text-slate-900">Open 7 Days a Week from 9 AM to 9 PM</span>
+                <Clock className="h-6 w-6 text-amber-400 shrink-0" />
+                <span className="text-sm font-bold text-slate-200">Open 7 Days a Week from 9 AM to 8 PM</span>
               </div>
             </div>
 
-            <a href="#visit" className="btn btn-primary mt-8 shadow-md">
+            <a href="#visit" className="btn btn-gold mt-8 shadow-md">
               Plan Your Showroom Visit
             </a>
           </div>
 
-          <ol className="divide-y divide-slate-200 border-y border-slate-200">
+          <ol className="divide-y divide-white/10 border-y border-white/10">
             {whyChooseUsItems.map((item, idx) => (
               <li key={item.title} className="py-6 flex gap-4 sm:gap-6 items-start">
-                <span className="font-display text-4xl font-extrabold text-gold shrink-0">
+                <span className="font-display text-4xl sm:text-5xl font-extrabold gold-text shrink-0">
                   0{idx + 1}
                 </span>
                 <div>
-                  <div className="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-bold text-slate-700 mb-1 border border-slate-300">
+                  <div className="inline-block rounded-full bg-amber-500/15 border border-amber-500/30 px-2.5 py-0.5 text-xs font-bold text-amber-300 mb-1">
                     {item.badge}
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900">{item.title}</h3>
-                  <p className="mt-2 text-sm sm:text-base text-slate-700 font-medium leading-relaxed">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white drop-shadow">{item.title}</h3>
+                  <p className="mt-2 text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -983,10 +1062,10 @@ function WhyChooseUs() {
   );
 }
 
-// About Us Section
+// About Us Section with Sheer Glass Overlay
 function AboutUs() {
   return (
-    <section id="about" className="relative z-10 bg-ink py-20 md:py-28 text-white">
+    <section id="about" className="relative z-10 py-20 md:py-28 text-white">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 md:px-8 lg:grid-cols-2 lg:items-center">
         <div className="overflow-hidden rounded-3xl border border-white/20 shadow-2xl">
           <img
@@ -1006,56 +1085,56 @@ function AboutUs() {
               alt="Shirdi Sai Marbles Official Emblem"
               width={260}
               height={390}
-              className="h-16 w-auto sm:h-20 object-contain rounded-2xl border-2 border-gold/70 shadow-xl bg-slate-950 p-1 shrink-0"
+              className="h-16 w-auto sm:h-20 object-contain rounded-2xl border-2 border-amber-500/70 shadow-[0_0_20px_rgba(245,158,11,0.25)] bg-slate-950 p-1 shrink-0"
             />
             <div>
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-gold/20 px-3 py-1 text-xs font-bold text-gold uppercase tracking-wider mb-2 border border-gold/40">
-                <Award className="h-3.5 w-3.5" /> 16 Years of Business Excellence (Since 2010)
+              <div className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/20 px-3 py-1 text-xs font-bold text-amber-300 uppercase tracking-wider mb-2 border border-amber-500/40">
+                <Award className="h-3.5 w-3.5 text-amber-400" /> 16 Years of Business Excellence (Since 2010)
               </div>
-              <h3 className="font-display text-2xl sm:text-3xl font-bold text-white leading-tight">
+              <h3 className="font-display text-2xl sm:text-3xl font-bold text-white leading-tight drop-shadow">
                 Shirdi Sai Marbles &amp; Tiles
               </h3>
-              <p className="font-odia text-base font-bold text-gold/90 mt-0.5">
+              <p className="font-odia text-base font-bold text-amber-400 mt-0.5">
                 {siteData.nameOdia}
               </p>
             </div>
           </div>
 
-          <p className="mt-5 text-slate-200 font-medium leading-relaxed text-base sm:text-lg">
+          <p className="mt-5 text-slate-200 font-normal leading-relaxed text-base sm:text-lg drop-shadow">
             Proudly completing <strong>16 years of business in Jajpur Town</strong>, Shirdi Sai Marbles &amp; Tiles has been the trusted foundation for more than 5,000 homes, apartments, temples, and commercial spaces across Odisha.
           </p>
-          <p className="mt-4 text-slate-200 font-medium leading-relaxed text-base sm:text-lg">
+          <p className="mt-4 text-slate-200 font-normal leading-relaxed text-base sm:text-lg drop-shadow">
             Located at <strong>Raniramchandrapur, Gariapur, Jajpur Town</strong>, our showroom displays over 500+ live slab and tile designs. For 16 years, our commitment has stayed the same: 100% genuine first-grade materials at direct wholesale pricing with doorstep delivery.
           </p>
 
           <div className="mt-6 grid grid-cols-2 gap-3 py-4 border-y border-white/20">
-            <div className="rounded-xl bg-white/5 p-3 border border-white/10">
-              <p className="text-2xl font-bold text-gold font-display">16 Years</p>
-              <p className="text-xs text-slate-300 font-semibold">Of Business in Jajpur</p>
+            <div className="rounded-2xl glass-panel p-4 border border-amber-500/30">
+              <p className="text-3xl font-bold gold-text font-display">16 Years</p>
+              <p className="text-xs text-slate-300 font-semibold mt-1">Of Business in Jajpur</p>
             </div>
-            <div className="rounded-xl bg-white/5 p-3 border border-white/10">
-              <p className="text-2xl font-bold text-gold font-display">5,000+</p>
-              <p className="text-xs text-slate-300 font-semibold">Homes &amp; Sites Supplied</p>
+            <div className="rounded-2xl glass-panel p-4 border border-amber-500/30">
+              <p className="text-3xl font-bold gold-text font-display">5,000+</p>
+              <p className="text-xs text-slate-300 font-semibold mt-1">Homes &amp; Sites Supplied</p>
             </div>
           </div>
 
           <dl className="mt-6 grid gap-6 sm:grid-cols-2">
             <div>
-              <dt className="text-gold text-xs uppercase font-bold tracking-wider">Showroom Address</dt>
-              <dd className="mt-2 text-sm leading-relaxed text-white font-medium">
+              <dt className="text-amber-400 text-xs uppercase font-bold tracking-wider">Showroom Address</dt>
+              <dd className="mt-2 text-sm leading-relaxed text-slate-200 font-medium drop-shadow">
                 {siteData.addressLine1}
                 <br />
                 {siteData.addressLine2}
               </dd>
             </div>
             <div>
-              <dt className="text-gold text-xs uppercase font-bold tracking-wider">Contact Numbers</dt>
-              <dd className="mt-2 space-y-1 text-sm font-semibold text-white">
+              <dt className="text-amber-400 text-xs uppercase font-bold tracking-wider">Contact Numbers</dt>
+              <dd className="mt-2 space-y-1 text-sm font-semibold text-slate-200">
                 {siteData.phones.map((phone) => (
                   <a
                     key={phone}
                     href={getTelUrl(phone)}
-                    className="block hover:text-gold transition-colors"
+                    className="block hover:text-amber-400 transition-colors"
                   >
                     +91 {phone}
                   </a>
@@ -1065,7 +1144,7 @@ function AboutUs() {
           </dl>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary text-sm">
+            <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" className="btn btn-gold text-sm">
               <MapPin className="h-4 w-4" /> Open in Google Maps
             </a>
             <a href={getWhatsAppUrl(siteData.phones[0])} target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp text-sm">
@@ -1078,17 +1157,17 @@ function AboutUs() {
   );
 }
 
-// Testimonials / Social Proof Section
+// Testimonials / Social Proof Section in Translucent Glass
 function Testimonials() {
   return (
-    <section className="relative z-10 bg-white py-20 md:py-28 border-t border-border">
+    <section className="relative z-10 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="text-center max-w-2xl mx-auto">
           <p className="eyebrow">Customer Experiences</p>
-          <h2 className="mt-2 text-3xl md:text-5xl font-bold text-slate-900">
+          <h2 className="mt-2 text-3xl md:text-5xl font-bold text-white font-display drop-shadow">
             Trusted by 5,000+ Odisha Homes
           </h2>
-          <p className="mt-3 text-base text-slate-700 font-medium">
+          <p className="mt-3 text-base text-slate-200 font-normal drop-shadow">
             Hear what local homeowners, builders, and engineers say about our quality and service.
           </p>
         </div>
@@ -1097,22 +1176,22 @@ function Testimonials() {
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="rounded-2xl bg-slate-50 p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col justify-between"
+              className="rounded-3xl glass-panel p-6 sm:p-8 border border-white/15 hover:border-amber-500/40 transition-all text-white flex flex-col justify-between shadow-xl"
             >
               <div>
-                <div className="flex gap-1 text-gold mb-4">
+                <div className="flex gap-1 text-amber-400 mb-4">
                   {[...Array(t.rating)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 fill-current" />
                   ))}
                 </div>
-                <p className="text-slate-800 font-medium text-base italic leading-relaxed">
+                <p className="text-slate-200 font-medium text-base italic leading-relaxed">
                   "{t.comment}"
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-slate-200">
-                <p className="font-bold text-slate-900">{t.name}</p>
-                <p className="text-xs font-semibold text-slate-600">
+              <div className="mt-6 pt-4 border-t border-white/10">
+                <p className="font-bold text-white">{t.name}</p>
+                <p className="text-xs font-semibold text-amber-400">
                   {t.role} • {t.location}
                 </p>
               </div>
@@ -1124,21 +1203,21 @@ function Testimonials() {
   );
 }
 
-// FAQ Section
+// FAQ Section in Translucent Glass
 function FAQ() {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative z-10 bg-secondary py-20 md:py-28 border-t border-border">
+    <section id="faq" className="relative z-10 py-20 md:py-28">
       <div className="mx-auto max-w-5xl px-4 md:px-8">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <p className="eyebrow flex items-center justify-center gap-1.5">
             <HelpCircle className="h-4 w-4" /> Got Questions?
           </p>
-          <h2 className="mt-2 text-3xl md:text-5xl font-bold text-slate-900">
+          <h2 className="mt-2 text-3xl md:text-5xl font-bold text-white font-display drop-shadow">
             Frequently Asked Questions
           </h2>
-          <p className="mt-3 text-base text-slate-700 font-medium">
+          <p className="mt-3 text-base text-slate-200 font-normal drop-shadow">
             Everything you need to know about our tile inventory, wholesale pricing, and doorstep delivery.
           </p>
         </div>
@@ -1149,25 +1228,25 @@ function FAQ() {
             return (
               <div
                 key={faq.q}
-                className="rounded-2xl bg-white border border-slate-200 overflow-hidden shadow-sm transition-all"
+                className="rounded-2xl glass-panel border border-white/10 hover:border-amber-400/40 overflow-hidden shadow-lg transition-all text-white"
               >
                 <button
                   onClick={() => setOpenIdx(isOpen ? null : index)}
                   className="w-full flex items-center justify-between p-5 sm:p-6 text-left cursor-pointer"
                 >
-                  <span className="font-bold text-slate-900 text-lg sm:text-xl pr-4">
+                  <span className="font-bold text-white text-lg sm:text-xl pr-4 font-display">
                     {faq.q}
                   </span>
                   <span
-                    className={`grid h-8 w-8 shrink-0 place-items-center rounded-full bg-slate-100 font-bold text-slate-700 transition-transform ${
-                      isOpen ? "rotate-180 bg-primary text-white" : ""
+                    className={`grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white/10 font-bold text-amber-400 transition-transform ${
+                      isOpen ? "rotate-180 bg-amber-500 text-slate-950" : ""
                     }`}
                   >
                     ↓
                   </span>
                 </button>
                 {isOpen && (
-                  <div className="px-5 sm:px-6 pb-6 pt-1 text-slate-700 text-base font-medium leading-relaxed border-t border-slate-100">
+                  <div className="px-5 sm:px-6 pb-6 pt-1 text-slate-200 text-base font-normal leading-relaxed border-t border-white/10">
                     {faq.a}
                   </div>
                 )}
@@ -1177,7 +1256,7 @@ function FAQ() {
         </div>
 
         <div className="mt-10 text-center">
-          <p className="text-sm font-semibold text-slate-700">Have a specific question not listed here?</p>
+          <p className="text-sm font-semibold text-slate-300">Have a specific question not listed here?</p>
           <a
             href={getWhatsAppUrl(
               siteData.phones[0],
@@ -1195,37 +1274,37 @@ function FAQ() {
   );
 }
 
-// Visit Our Showroom CTA Section
+// Visit Our Showroom CTA Section: Ultra-luxury architectural glass card
 function VisitShowroom() {
   return (
-    <section id="visit" className="relative z-10 bg-white py-20 md:py-28 border-t border-border">
+    <section id="visit" className="relative z-10 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="rounded-3xl border-2 border-gold/50 bg-gradient-to-br from-white via-slate-50 to-amber-50/30 p-6 sm:p-10 md:p-14 shadow-xl">
+        <div className="rounded-3xl glass-panel-gold p-6 sm:p-10 md:p-14 shadow-2xl text-white">
           <div className="flex items-center gap-4 mb-4">
             <img
               src="/logo.webp"
               alt="Shirdi Sai Marbles Official Logo"
               width={260}
               height={390}
-              className="h-16 w-auto sm:h-20 object-contain rounded-2xl border-2 border-gold/60 shadow-lg bg-slate-950 p-1 shrink-0"
+              className="h-16 w-auto sm:h-20 object-contain rounded-2xl border-2 border-amber-500/70 shadow-[0_0_20px_rgba(245,158,11,0.25)] bg-slate-950 p-1 shrink-0"
             />
             <div>
               <p className="eyebrow">Visit Our Showroom in Jajpur Town</p>
-              <h2 className="mt-1 text-2xl sm:text-4xl md:text-5xl font-bold text-slate-900 font-display">
+              <h2 className="mt-1 text-2xl sm:text-4xl md:text-5xl font-bold text-white font-display drop-shadow">
                 Experience 500+ Designs in Person
               </h2>
             </div>
           </div>
-          <p className="mt-4 max-w-2xl text-base sm:text-lg text-slate-700 font-medium leading-relaxed">
+          <p className="mt-4 max-w-2xl text-base sm:text-lg text-slate-200 font-normal leading-relaxed">
             Visit <strong>Shirdi Sai Marbles &amp; Tiles</strong> at <strong>Raniramchandrapur, Gariapur, Jajpur Town, Odisha - 755001</strong>. Our showroom consultants are available 7 days a week to help you choose the best materials, calculate exact box quantities, and offer wholesale discounts.
           </p>
 
           <div className="mt-8 grid gap-6 sm:grid-cols-3">
-            <div className="rounded-xl bg-white p-4 border border-slate-200 shadow-sm flex gap-3">
-              <MapPin className="h-6 w-6 text-primary shrink-0 mt-1" />
+            <div className="rounded-2xl bg-black/40 p-5 border border-white/10 shadow-sm flex gap-3.5">
+              <MapPin className="h-6 w-6 text-amber-400 shrink-0 mt-1" />
               <div>
-                <p className="font-bold text-slate-900">Address</p>
-                <p className="text-sm text-slate-700 mt-1 leading-relaxed font-medium">
+                <p className="font-bold text-white">Address</p>
+                <p className="text-sm text-slate-300 mt-1 leading-relaxed font-medium">
                   {siteData.addressLine1}
                   <br />
                   {siteData.addressLine2}
@@ -1233,27 +1312,27 @@ function VisitShowroom() {
               </div>
             </div>
 
-            <div className="rounded-xl bg-white p-4 border border-slate-200 shadow-sm flex gap-3">
-              <Clock className="h-6 w-6 text-primary shrink-0 mt-1" />
+            <div className="rounded-2xl bg-black/40 p-5 border border-white/10 shadow-sm flex gap-3.5">
+              <Clock className="h-6 w-6 text-amber-400 shrink-0 mt-1" />
               <div>
-                <p className="font-bold text-slate-900">Working Hours</p>
-                <div className="text-sm text-slate-700 mt-1 leading-relaxed font-medium space-y-0.5">
+                <p className="font-bold text-white">Working Hours</p>
+                <div className="text-sm text-slate-300 mt-1 leading-relaxed font-medium space-y-0.5">
                   <p>{siteData.hoursMonSat}</p>
                   <p>{siteData.hoursSun}</p>
-                  <span className="inline-block mt-1 text-xs text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded-full">
+                  <span className="inline-block mt-1 text-xs text-emerald-400 font-semibold bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded-full">
                     Open All 7 Days
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-xl bg-white p-4 border border-slate-200 shadow-sm flex gap-3">
-              <Phone className="h-6 w-6 text-primary shrink-0 mt-1" />
+            <div className="rounded-2xl bg-black/40 p-5 border border-white/10 shadow-sm flex gap-3.5">
+              <Phone className="h-6 w-6 text-amber-400 shrink-0 mt-1" />
               <div>
-                <p className="font-bold text-slate-900">Phone Numbers</p>
-                <p className="text-sm text-slate-700 mt-1 font-semibold space-y-1">
+                <p className="font-bold text-white">Phone Numbers</p>
+                <p className="text-sm text-slate-300 mt-1 font-semibold space-y-1">
                   {siteData.phones.map((p) => (
-                    <a key={p} href={getTelUrl(p)} className="block hover:text-primary">
+                    <a key={p} href={getTelUrl(p)} className="block hover:text-amber-400">
                       +91 {p}
                     </a>
                   ))}
@@ -1267,7 +1346,7 @@ function VisitShowroom() {
               href={googleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-primary text-base font-bold shadow-md"
+              className="btn btn-gold text-base font-bold shadow-md"
             >
               <MapPin className="h-5 w-5" /> Get Google Maps Directions
             </a>
@@ -1275,7 +1354,7 @@ function VisitShowroom() {
               href={getTelUrl(siteData.phones[0])}
               className="btn btn-outline text-base font-bold"
             >
-              <Phone className="h-5 w-5" /> Call Showroom Directly
+              <Phone className="h-5 w-5 text-amber-400" /> Call Showroom Directly
             </a>
             <a
               href={getWhatsAppUrl(siteData.phones[0])}
@@ -1292,7 +1371,7 @@ function VisitShowroom() {
   );
 }
 
-// Contact Form with WhatsApp Integration
+// Contact Form with WhatsApp Integration in Sheer Glass
 function ContactEnquiry() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -1348,10 +1427,10 @@ function ContactEnquiry() {
   };
 
   const inputStyle =
-    "mt-2 block w-full rounded-xl border-2 border-slate-300 bg-white px-4 py-3 text-base font-medium text-slate-900 outline-none focus:border-primary transition-colors";
+    "mt-2 block w-full rounded-xl border-2 border-slate-700 bg-black/60 px-4 py-3 text-base font-medium text-white outline-none focus:border-amber-400 transition-colors";
 
   return (
-    <section id="contact" className="relative z-10 bg-secondary py-20 md:py-28 border-t border-border">
+    <section id="contact" className="relative z-10 py-20 md:py-28">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 md:px-8 lg:grid-cols-[1fr_1.3fr]">
         <div>
           <div className="flex items-center gap-3.5 mb-3">
@@ -1360,31 +1439,31 @@ function ContactEnquiry() {
               alt="Shirdi Sai Marbles Official Logo"
               width={260}
               height={390}
-              className="h-12 w-auto sm:h-14 object-contain rounded-xl border border-gold/60 shadow-md bg-slate-950 p-0.5 shrink-0"
+              className="h-12 w-auto sm:h-14 object-contain rounded-xl border border-amber-500/60 shadow-md bg-slate-950 p-0.5 shrink-0"
             />
             <div>
               <p className="eyebrow">Official WhatsApp Quote Desk</p>
-              <p className="font-odia text-xs font-bold text-gold">{siteData.nameOdia}</p>
+              <p className="font-odia text-xs font-bold text-amber-400">{siteData.nameOdia}</p>
             </div>
           </div>
-          <h2 className="mt-1 text-3xl md:text-5xl font-bold text-slate-900">
+          <h2 className="mt-1 text-3xl md:text-5xl font-bold text-white font-display drop-shadow">
             Request Price Estimate
           </h2>
-          <p className="mt-4 text-base text-slate-700 font-medium leading-relaxed">
+          <p className="mt-4 text-base text-slate-300 font-normal leading-relaxed drop-shadow">
             Fill in your project details. We will automatically format and open WhatsApp with your message ready. You can review and edit before sending!
           </p>
 
           <div className="mt-8 space-y-4">
-            <div className="flex items-center gap-3 text-slate-800 font-semibold text-sm">
-              <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0" />
+            <div className="flex items-center gap-3 text-slate-200 font-semibold text-sm">
+              <CheckCircle2 className="h-5 w-5 text-emerald-400 shrink-0" />
               <span>Instant response during showroom working hours</span>
             </div>
-            <div className="flex items-center gap-3 text-slate-800 font-semibold text-sm">
-              <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0" />
+            <div className="flex items-center gap-3 text-slate-200 font-semibold text-sm">
+              <CheckCircle2 className="h-5 w-5 text-emerald-400 shrink-0" />
               <span>Free design catalog sent directly to your phone</span>
             </div>
-            <div className="flex items-center gap-3 text-slate-800 font-semibold text-sm">
-              <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0" />
+            <div className="flex items-center gap-3 text-slate-200 font-semibold text-sm">
+              <CheckCircle2 className="h-5 w-5 text-emerald-400 shrink-0" />
               <span>Wholesale pricing quotation with no obligation</span>
             </div>
           </div>
@@ -1393,10 +1472,10 @@ function ContactEnquiry() {
         <form
           onSubmit={handleSubmit}
           noValidate
-          className="rounded-3xl bg-white p-6 sm:p-10 border border-slate-200 shadow-xl space-y-5"
+          className="rounded-3xl glass-panel p-6 sm:p-10 border border-amber-500/30 shadow-2xl space-y-5 text-white"
         >
           <div>
-            <label htmlFor="name" className="text-sm font-bold text-slate-900">
+            <label htmlFor="name" className="text-sm font-bold text-slate-200">
               Your Name *
             </label>
             <input
@@ -1407,11 +1486,11 @@ function ContactEnquiry() {
               placeholder="e.g. Rajesh Kumar"
               aria-invalid={!!errors.name}
             />
-            {errors.name && <p className="mt-1 text-sm font-bold text-red-600">{errors.name}</p>}
+            {errors.name && <p className="mt-1 text-sm font-bold text-red-400">{errors.name}</p>}
           </div>
 
           <div>
-            <label htmlFor="phone" className="text-sm font-bold text-slate-900">
+            <label htmlFor="phone" className="text-sm font-bold text-slate-200">
               Mobile Number (10 digits) *
             </label>
             <input
@@ -1423,12 +1502,12 @@ function ContactEnquiry() {
               placeholder="e.g. 9438467960"
               aria-invalid={!!errors.phone}
             />
-            {errors.phone && <p className="mt-1 text-sm font-bold text-red-600">{errors.phone}</p>}
+            {errors.phone && <p className="mt-1 text-sm font-bold text-red-400">{errors.phone}</p>}
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="cat" className="text-sm font-bold text-slate-900">
+              <label htmlFor="cat" className="text-sm font-bold text-slate-200">
                 Product of Interest
               </label>
               <select
@@ -1438,17 +1517,17 @@ function ContactEnquiry() {
                 onChange={(e) => setCategory(e.target.value)}
               >
                 {products.map((p) => (
-                  <option key={p.id} value={p.name}>
+                  <option key={p.id} value={p.name} className="bg-slate-950 text-white">
                     {p.name}
                   </option>
                 ))}
-                <option value="Complete House Package">Complete House Package</option>
-                <option value="Granite Kitchen Countertop">Granite Kitchen Countertop</option>
+                <option value="Complete House Package" className="bg-slate-950 text-white">Complete House Package</option>
+                <option value="Granite Kitchen Countertop" className="bg-slate-950 text-white">Granite Kitchen Countertop</option>
               </select>
             </div>
 
             <div>
-              <label htmlFor="area" className="text-sm font-bold text-slate-900">
+              <label htmlFor="area" className="text-sm font-bold text-slate-200">
                 Approx. Area (Sq. Ft.)
               </label>
               <input
@@ -1463,8 +1542,8 @@ function ContactEnquiry() {
           </div>
 
           <div>
-            <label htmlFor="note" className="text-sm font-bold text-slate-900">
-              Additional Details / Preferences <span className="text-slate-500 font-normal">(Optional)</span>
+            <label htmlFor="note" className="text-sm font-bold text-slate-200">
+              Additional Details / Preferences <span className="text-slate-400 font-normal">(Optional)</span>
             </label>
             <textarea
               id="note"
@@ -1477,19 +1556,19 @@ function ContactEnquiry() {
           </div>
 
           <fieldset>
-            <legend className="text-sm font-bold text-slate-900">Send WhatsApp Message To:</legend>
+            <legend className="text-sm font-bold text-slate-200">Send WhatsApp Message To:</legend>
             <div className="mt-2 flex flex-wrap gap-4">
               {siteData.phones.map((num) => (
                 <label
                   key={num}
-                  className="flex items-center gap-2 cursor-pointer font-semibold text-sm text-slate-800"
+                  className="flex items-center gap-2 cursor-pointer font-semibold text-sm text-slate-200"
                 >
                   <input
                     type="radio"
                     name="targetPhone"
                     checked={targetPhone === num}
                     onChange={() => setTargetPhone(num)}
-                    className="accent-primary h-4 w-4"
+                    className="accent-amber-400 h-4 w-4"
                   />
                   +91 {num}
                 </label>
@@ -1502,7 +1581,7 @@ function ContactEnquiry() {
           </button>
 
           {submitted && (
-            <p role="status" className="text-sm font-bold text-emerald-700 bg-emerald-50 p-3 rounded-lg border border-emerald-200">
+            <p role="status" className="text-sm font-bold text-emerald-400 bg-emerald-950/60 p-3 rounded-xl border border-emerald-500/30">
               ✓ WhatsApp has opened in a new tab with your enquiry filled out. Please press send there!
             </p>
           )}
@@ -1512,10 +1591,10 @@ function ContactEnquiry() {
   );
 }
 
-// Footer Component
+// Footer Component in Dark Luxury Glass
 function Footer() {
   return (
-    <footer className="relative z-10 bg-slate-950 text-white pb-20 md:pb-8 pt-16">
+    <footer className="relative z-10 bg-black/70 backdrop-blur-md border-t border-amber-500/20 text-white pb-24 md:pb-10 pt-16">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 md:grid-cols-4 md:px-8">
         <div className="md:col-span-1">
           <img
@@ -1523,26 +1602,26 @@ function Footer() {
             alt="Shirdi Sai Marbles & Tiles Official Logo"
             width={260}
             height={390}
-            className="h-20 w-auto object-contain rounded-2xl border-2 border-gold/70 shadow-2xl bg-slate-900 p-1 mb-4"
+            className="h-20 w-auto object-contain rounded-2xl border-2 border-amber-500/70 shadow-2xl bg-slate-900 p-1 mb-4"
           />
           <p className="font-display text-2xl font-bold text-white">{siteData.name}</p>
-          <p className="mt-1 font-odia text-gold font-bold">{siteData.nameOdia}</p>
-          <p className="mt-3 text-sm text-slate-300 font-medium leading-relaxed">
+          <p className="mt-1 font-odia text-amber-400 font-bold">{siteData.nameOdia}</p>
+          <p className="mt-3 text-sm text-slate-300 font-normal leading-relaxed">
             {siteData.tagline}. Leading distributor of tiles, marble slabs, and granite in Jajpur Town, Odisha.
           </p>
           <div className="mt-4 flex gap-2">
-            <span className="inline-flex items-center gap-1 text-xs text-gold font-bold bg-white/10 px-2.5 py-1 rounded-md">
+            <span className="inline-flex items-center gap-1 text-xs text-amber-300 font-bold bg-amber-500/15 border border-amber-500/30 px-2.5 py-1 rounded-md">
               <Star className="h-3 w-3 fill-current" /> Certified Dealer
             </span>
           </div>
         </div>
 
         <div>
-          <p className="text-gold text-xs uppercase font-bold tracking-wider">Product Categories</p>
+          <p className="text-amber-400 text-xs uppercase font-bold tracking-wider">Product Categories</p>
           <ul className="mt-4 space-y-2 text-sm text-slate-300 font-medium">
             {products.map((p) => (
               <li key={p.id}>
-                <a href="#products" className="hover:text-gold transition-colors">
+                <a href="#products" className="hover:text-amber-400 transition-colors">
                   {p.name}
                 </a>
               </li>
@@ -1551,11 +1630,11 @@ function Footer() {
         </div>
 
         <div>
-          <p className="text-gold text-xs uppercase font-bold tracking-wider">Quick Navigation</p>
+          <p className="text-amber-400 text-xs uppercase font-bold tracking-wider">Quick Navigation</p>
           <ul className="mt-4 space-y-2 text-sm text-slate-300 font-medium">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="hover:text-gold transition-colors">
+                <a href={link.href} className="hover:text-amber-400 transition-colors">
                   {link.label}
                 </a>
               </li>
@@ -1564,7 +1643,7 @@ function Footer() {
         </div>
 
         <div className="text-sm">
-          <p className="text-gold text-xs uppercase font-bold tracking-wider">Showroom &amp; Contact</p>
+          <p className="text-amber-400 text-xs uppercase font-bold tracking-wider">Showroom &amp; Contact</p>
           <p className="mt-4 text-slate-300 font-medium leading-relaxed">
             {siteData.addressLine1}
             <br />
@@ -1576,7 +1655,7 @@ function Footer() {
               <a
                 key={phone}
                 href={getTelUrl(phone)}
-                className="block text-white font-bold hover:text-gold transition-colors"
+                className="block text-white font-bold hover:text-amber-400 transition-colors"
               >
                 +91 {phone}
               </a>
@@ -1587,7 +1666,7 @@ function Footer() {
               href={getWhatsAppUrl(siteData.phones[0])}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-bold text-green-400 hover:underline inline-flex items-center gap-1"
+              className="text-xs font-bold text-emerald-400 hover:underline inline-flex items-center gap-1"
             >
               <MessageCircle className="h-3.5 w-3.5" /> WhatsApp Enquiry
             </a>
@@ -1595,7 +1674,7 @@ function Footer() {
               href={googleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-bold text-gold hover:underline inline-flex items-center gap-1"
+              className="text-xs font-bold text-amber-400 hover:underline inline-flex items-center gap-1"
             >
               <MapPin className="h-3.5 w-3.5" /> Get Directions in Google Maps
             </a>
@@ -1619,10 +1698,10 @@ function MobileQuickBar() {
   return (
     <nav
       aria-label="Quick Mobile Actions"
-      className="fixed inset-x-0 bottom-0 z-40 flex border-t border-slate-200 bg-white/98 backdrop-blur-lg md:hidden shadow-2xl"
+      className="fixed inset-x-0 bottom-0 z-40 flex border-t border-amber-500/20 bg-slate-950/90 backdrop-blur-xl md:hidden shadow-2xl text-white"
     >
-      <a href={getTelUrl(siteData.phones[0])} className={`${itemStyle} text-slate-900 active:bg-slate-100`}>
-        <Phone className="h-5 w-5 text-primary" />
+      <a href={getTelUrl(siteData.phones[0])} className={`${itemStyle} text-slate-200 active:bg-slate-900`}>
+        <Phone className="h-5 w-5 text-amber-400" />
         Call Showroom
       </a>
       <a
@@ -1630,7 +1709,7 @@ function MobileQuickBar() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Get instant WhatsApp Quote"
-        className={`${itemStyle} bg-emerald-700 text-white active:bg-emerald-800 shadow-md`}
+        className={`${itemStyle} bg-emerald-600 text-white active:bg-emerald-700 shadow-md`}
       >
         <MessageCircle className="h-5 w-5" />
         WhatsApp Quote
@@ -1639,9 +1718,9 @@ function MobileQuickBar() {
         href={googleMapsUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className={`${itemStyle} text-slate-900 active:bg-slate-100`}
+        className={`${itemStyle} text-slate-200 active:bg-slate-900`}
       >
-        <MapPin className="h-5 w-5 text-primary" />
+        <MapPin className="h-5 w-5 text-amber-400" />
         Directions
       </a>
     </nav>
@@ -1651,26 +1730,29 @@ function MobileQuickBar() {
 // Main App Root Component
 export default function App() {
   return (
-    <div className="relative min-h-screen text-foreground pb-16 md:pb-0">
+    <div className="relative min-h-screen text-slate-100 pb-16 md:pb-0 bg-transparent">
       {/* Scroll-based 3D Marble Tour Canvas in background */}
       <ScrollCanvas />
 
-      {/* Layered Content */}
-      <TopBar />
-      <Header />
-      <main>
-        <Hero />
-        <TileCalculator />
-        <Products />
-        <Gallery />
-        <WhyChooseUs />
-        <AboutUs />
-        <Testimonials />
-        <FAQ />
-        <VisitShowroom />
-        <ContactEnquiry />
-      </main>
-      <Footer />
+      {/* Layered Translucent Content */}
+      <div className="relative z-10">
+        <TopBar />
+        <Header />
+        <main>
+          <Hero />
+          <TourShowcase />
+          <TileCalculator />
+          <Products />
+          <Gallery />
+          <WhyChooseUs />
+          <AboutUs />
+          <Testimonials />
+          <FAQ />
+          <VisitShowroom />
+          <ContactEnquiry />
+        </main>
+        <Footer />
+      </div>
       <MobileQuickBar />
     </div>
   );
